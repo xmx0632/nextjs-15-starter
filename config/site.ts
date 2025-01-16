@@ -38,14 +38,14 @@ export const siteConfig: SiteConfig = {
     title: baseSiteConfig.name,
     description: baseSiteConfig.description,
     siteName: baseSiteConfig.name,
-    images: [`/og.webp`],
+    images: [`${baseSiteConfig.url}og.webp`],
   },
   twitter: {
     card: "summary_large_image",
     title: baseSiteConfig.name,
     site: baseSiteConfig.url,
     description: baseSiteConfig.description,
-    images: [`/og.webp`],
+    images: [`${baseSiteConfig.url}og.webp`],
     creator: baseSiteConfig.creator,
   },
 }
