@@ -3,13 +3,13 @@ import GoogleAnalytics from "@/app/GoogleAnalytics";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter as FontSans } from "next/font/google";
 
 export const fontSans = FontSans({

@@ -1,8 +1,8 @@
 import HeaderLinks from "@/components/header/HeaderLinks";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { siteConfig } from "@/config/site";
 import Image from "next/image";
 import Link from "next/link";
-import { ThemedButton } from "../ThemedButton";
 
 const Header = () => {
   return (
@@ -27,7 +27,7 @@ const Header = () => {
 
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <HeaderLinks />
-            <ThemedButton />
+            <ThemeToggle />
           </div>
         </nav>
       </div>
