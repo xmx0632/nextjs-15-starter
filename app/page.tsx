@@ -1,14 +1,10 @@
+import WebsiteLogo from "@/components/WebsiteLogo";
 import { siteConfig } from "@/config/site";
-import logger from "@/lib/logger";
 
 export default function Home() {
-  logger.debug("Debug message");
-  logger.info("Info message");
-  logger.warn("Warning message");
-  logger.error("Error message");
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-24 text-center">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-24 text-center">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-7xl dark:text-gray-200">
           New{" "}
           <span className="relative whitespace-nowrap text-blue-600">
@@ -27,7 +23,36 @@ export default function Home() {
         <p className="mx-auto mt-6 max-w-2xl text-2xl tracking-tight text-slate-700 dark:text-slate-500">
           {siteConfig.description}
         </p>
-      </div>
+      </section>
+
+      <section className="py-16">
+        <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-gray-200 mb-12">
+          Who is Using This Starter
+        </h2>
+
+        <div className="flex flex-wrap items-center justify-center gap-8">
+          {WEBSITE_LOGO_DEMO.map((website) => (
+            <a
+              key={website.name}
+              href={website.url}
+              className="flex flex-col items-center p-4 w-[160px]"
+            >
+              <WebsiteLogo url={website.url} size={36} className="mb-3" />
+              <p className="mt-3 line-clamp-2 h-[3rem] text-sm text-slate-600 dark:text-slate-400 text-center">
+                {website.name}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
+
+const WEBSITE_LOGO_DEMO = [
+  { name: "J Blog", url: "https://weijunext.com/" },
+  { name: "OG Image Generator", url: "https://ogimage.click/" },
+  { name: "Next Idea", url: "https://nextidea.dev/" },
+  { name: "Next Idea NewTab", url: "https://newtab.nextidea.dev/" },
+  { name: "NextJS 中文文档", url: "https://nextjscn.org/" },
+];
