@@ -16,9 +16,7 @@ const WebsiteLogo = ({
   timeout = 1000, // 1 second
 }: IProps) => {
   const domain = getDomain(url);
-  const [imgSrc, setImgSrc] = useState(
-    `https://${domain}/apple-touch-icon.png`
-  );
+  const [imgSrc, setImgSrc] = useState(`https://${domain}/logo.svg`);
   const [fallbackIndex, setFallbackIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
