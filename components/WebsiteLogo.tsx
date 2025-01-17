@@ -24,8 +24,8 @@ const WebsiteLogo = ({
   const [hasError, setHasError] = useState(false);
 
   const fallbackSources = [
-    `https://${domain}/logo.png`,
     `https://${domain}/logo.svg`,
+    `https://${domain}/logo.png`,
     `https://${domain}/apple-touch-icon.png`,
     `https://${domain}/apple-touch-icon-precomposed.png`,
     `https://www.google.com/s2/favicons?domain=${domain}&sz=64`,
