@@ -1,15 +1,20 @@
 import Link from "next/link";
 
 const footerProducts = [
-  { url: "https://phcopilot.ai/", name: "Product Hunt Copilot" },
-  { url: "https://smartexcel.cc/", name: "Smart Excel" },
+  {
+    url: "https://nextidea.dev/",
+    name: "Next Idea",
+  },
+  {
+    url: "https://newtab.nextidea.dev/",
+    name: "NewTab",
+  },
   {
     url: "https://landingpage.weijunext.com/",
     name: "Landing Page Boilerplate",
   },
   { url: "https://nextjscn.org/", name: "Next.js 中文文档" },
   { url: "https://nextjs.weijunext.com/", name: "Next.js Practice" },
-  { url: "https://starter.weijunext.com/", name: "Next.js Starter" },
   {
     url: "https://github.com/weijunext/indie-hacker-tools",
     name: "Indie Hacker Tools",
