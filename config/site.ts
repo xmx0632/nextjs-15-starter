@@ -7,7 +7,7 @@ const baseSiteConfig = {
   description:
     "Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
   url: BASE_URL,
-  metadataBase: '/',
+  metadataBase: new URL(BASE_URL),
   keywords: ["next.js 15 starter", "next.js template", "next.js 15 base", "study next.js"],
   authors: [
     {
