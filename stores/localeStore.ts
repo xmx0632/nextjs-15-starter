@@ -1,5 +1,6 @@
-import { Locale } from '@/i18n/routing'
-import { create } from 'zustand'
+import { Locale } from '@/i18n/routing';
+import Cookies from 'js-cookie'; // 建议使用 js-cookie 库来简化 Cookie 操作
+import { create } from 'zustand';
 
 interface LocaleState {
   currentLocale: Locale
@@ -23,10 +24,11 @@ export const useLocaleStore = create<LocaleState>((set) => ({
   setShowLanguageAlert: (show) => set({ showLanguageAlert: show }),
   setBrowserLang: (lang) => set({ browserLang: lang }),
   dismissLanguageAlert: () => {
-    localStorage.setItem("langAlertDismissed", "true");
+    // cookie expires 30 days
+    Cookies.set("langAlertDismissed", "true", { expires: 30 });
     set({ showLanguageAlert: false });
   },
   getLangAlertDismissed: () => {
-    return localStorage.getItem("langAlertDismissed") === "true";
+    return Cookies.get("langAlertDismissed") === "true";
   },
 }))
