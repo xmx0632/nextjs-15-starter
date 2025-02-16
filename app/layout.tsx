@@ -2,6 +2,7 @@ import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import { LanguageDetectionAlert } from "@/components/LanguageDetectionAlert";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -9,9 +10,9 @@ import "@/styles/globals.css";
 import "@/styles/loading.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
-import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: siteConfig.name,
@@ -51,6 +52,7 @@ export default async function RootLayout({
             defaultTheme={siteConfig.defaultNextTheme}
             enableSystem
           >
+            <LanguageDetectionAlert />
             <Header />
             <main className="flex flex-col items-center py-6">{children}</main>
             <Footer />
