@@ -32,7 +32,7 @@ export default function HomeComponent() {
           id="who-is-using"
           className="text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-gray-200 mb-12"
         >
-          Who is Using This Starter
+          {t("whoIsUsing")}
         </h2>
 
         <div className="flex flex-wrap items-center justify-center gap-8">

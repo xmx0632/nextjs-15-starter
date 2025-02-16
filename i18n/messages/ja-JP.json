@@ -1,7 +1,8 @@
 {
   "Home": {
     "title": "Next.js 15 i18n Starter",
-    "description": "多言語対応機能を搭載したNext.js 15スターターテンプレート。SEO最適化済みで、グローバル展開可能なウェブアプリを効率的に構築できます。"
+    "description": "多言語対応機能を搭載したNext.js 15スターターテンプレート。SEO最適化済みで、グローバル展開可能なウェブアプリを効率的に構築できます。",
+    "whoIsUsing": "誰がこのスターターを使用していますか"
   },
   "LanguageDetection": {
     "title": "言語の提案",
