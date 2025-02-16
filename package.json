@@ -14,7 +14,6 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.6",
     "@types/js-cookie": "^3.0.6",
-    "@types/winston": "^2.4.4",
     "@vercel/analytics": "^1.4.1",
     "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
@@ -33,7 +32,7 @@
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "winston": "^3.13.0",
+    "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
     "zod": "^3.24.1",
     "zustand": "^5.0.3"
