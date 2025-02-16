@@ -1,27 +1,30 @@
 import { siteConfig } from '@/config/site'
 import { LOCALES } from '@/i18n/routing'
 import { MetadataRoute } from 'next'
+
 const siteUrl = siteConfig.url
 
+type ChangeFrequency = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' | undefined
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // 静态页面
+  // Static pages
   const staticPages = [
     '',
     // '/about',
-    // 添加其他静态页面路径
+    // Add other static page paths
   ]
 
-  // 生成多语言页面
+  // Generate multilingual pages
   const pages = LOCALES.flatMap(locale => {
     return staticPages.map(page => ({
       url: `${siteUrl}${locale === 'en-US' ? '' : `/${locale}`}${page}`,
       lastModified: new Date(),
-      changeFrequency: page === '' ? 'daily' : 'weekly' as 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never' | undefined,
+      changeFrequency: page === '' ? 'daily' : 'weekly' as ChangeFrequency,
       priority: page === '' ? 1.0 : 0.8,
     }))
   })
 
-  // 如果你有动态页面（如博客），可以在这里添加
+  // If you have dynamic pages (like blogs), add them here
   // const blogPosts = await getBlogPosts()
   // const blogPages = blogPosts.map(post => ({
   //   url: `${siteUrl}/blogs/${post.slug}`,
@@ -32,6 +35,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...pages,
-    // ...blogPages, // 如果有动态页面，取消注释
+    // ...blogPages, // Uncomment if you have dynamic pages
   ]
 }
