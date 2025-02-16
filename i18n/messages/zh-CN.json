@@ -1,12 +1,16 @@
 {
+  "LanguageDetection": {
+    "title": "语言建议",
+    "description": "检测到您的浏览器语言和当前语言不一样，您随时都可切换语言 👉",
+    "countdown": "将在 {countdown} 秒后关闭"
+  },
   "Home": {
     "title": "Next.js 15 i18n Starter",
     "description": "内置多语言支持的 Next.js 15 启动模板，助您快速构建面向全球的出海网站。简洁高效，开箱即用，完全优化的SEO基础架构。",
     "whoIsUsing": "谁在使用"
   },
-  "LanguageDetection": {
-    "title": "语言建议",
-    "description": "检测到您的浏览器语言和当前语言不一样，您随时都可切换语言 👉",
-    "countdown": "将在 {countdown} 秒后关闭"
+  "Blogs": {
+    "title": "博客列表",
+    "description": "博客列表"
   }
 }
