@@ -19,10 +19,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return staticPages.map(page => ({
       url: `${siteUrl}${locale === 'en-US' ? '' : `/${locale}`}${page}`,
       lastModified: new Date(),
-      changeFrequency: page === '' ? 'daily' : 'weekly' as ChangeFrequency,
+      changeFrequency: 'daily' as ChangeFrequency,
       priority: page === '' ? 1.0 : 0.8,
     }))
   })
+
+  // Not multiple pages
+  const defaultLocalesPages = [
+    '/about',
+  ]
+  pages.push(...defaultLocalesPages.map(page => ({
+    url: `${siteUrl}${page}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as ChangeFrequency,
+    priority: 1.0,
+  })))
 
   // If you have dynamic pages (like blogs), add them here
   // const blogPosts = await getBlogPosts()
