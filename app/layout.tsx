@@ -10,12 +10,8 @@ import "@/styles/loading.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
 import { ThemeProvider } from "next-themes";
-import { Inter as FontSans } from "next/font/google";
-
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 export const metadata = {
   title: siteConfig.name,
@@ -34,29 +30,34 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  const { locale } = await params;
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme={siteConfig.defaultNextTheme}
-          enableSystem
-        >
-          <Header />
-          <main className="flex flex-col items-center py-6">{children}</main>
-          <Footer />
-          <Analytics />
-          <TailwindIndicator />
-        </ThemeProvider>
+      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme={siteConfig.defaultNextTheme}
+            enableSystem
+          >
+            <Header />
+            <main className="flex flex-col items-center py-6">{children}</main>
+            <Footer />
+            <Analytics />
+            <TailwindIndicator />
+          </ThemeProvider>
+        </NextIntlClientProvider>
         {process.env.NODE_ENV === "development" ? (
           <></>
         ) : (
