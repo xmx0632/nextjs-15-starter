@@ -52,7 +52,6 @@ const Header = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>
-                    {" "}
                     <Link
                       href="/"
                       className="flex items-center space-x-1 font-bold"
