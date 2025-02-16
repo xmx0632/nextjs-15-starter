@@ -1,18 +1,71 @@
+"use client";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  DEFAULT_LOCALE,
+  Locale,
+  LOCALE_NAMES,
+  routing,
+  usePathname,
+  useRouter,
+} from "@/i18n/routing";
+import { useLocaleStore } from "@/stores/localeStore";
+import { Globe } from "lucide-react";
 import { useLocale } from "next-intl";
-import { LOCALE_NAMES, routing } from "@/i18n/routing";
-import LocaleSwitcherSelect from "./LocaleSwitcherSelect";
-import { SelectItem } from "@/components/ui/select";
+import { useParams } from "next/navigation";
+import { useEffect, useTransition } from "react";
 
 export default function LocaleSwitcher() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useParams();
   const locale = useLocale();
+  const { currentLocale, setCurrentLocale, dismissLanguageAlert } =
+    useLocaleStore();
+  const [, startTransition] = useTransition();
+
+  useEffect(() => {
+    setCurrentLocale(locale);
+  }, [locale, setCurrentLocale]);
+
+  function onSelectChange(nextLocale: Locale) {
+    setCurrentLocale(nextLocale);
+    dismissLanguageAlert();
+
+    startTransition(() => {
+      router.replace(
+        // @ts-expect-error -- TypeScript will validate that only known `params`
+        // are used in combination with a given `pathname`. Since the two will
+        // always match for the current route, we can skip runtime checks.
+        { pathname: "/", params: params || {} },
+        { locale: nextLocale === DEFAULT_LOCALE ? "/" : nextLocale }
+      );
+    });
+  }
 
   return (
-    <LocaleSwitcherSelect defaultValue={locale} label="Language">
-      {routing.locales.map((cur) => (
-        <SelectItem key={cur} value={cur}>
-          {LOCALE_NAMES[cur]}
-        </SelectItem>
-      ))}
-    </LocaleSwitcherSelect>
+    <Select
+      defaultValue={locale}
+      value={currentLocale}
+      onValueChange={onSelectChange}
+    >
+      <SelectTrigger className="w-fit">
+        <Globe className="w-4 h-4 mr-1" />
+        <SelectValue placeholder="Language" />
+      </SelectTrigger>
+      <SelectContent>
+        {routing.locales.map((cur) => (
+          <SelectItem key={cur} value={cur}>
+            {LOCALE_NAMES[cur]}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   );
 }

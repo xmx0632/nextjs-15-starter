@@ -1,45 +1,79 @@
 "use client";
 
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { LOCALE_NAMES, routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE, routing } from "@/i18n/routing";
+import { useLocaleStore } from "@/stores/localeStore";
 import { Globe, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 export function LanguageDetectionAlert() {
-  const t = useTranslations("LanguageDetection");
-  const [browserLang, setBrowserLang] = useState("");
-  const [showAlert, setShowAlert] = useState(false);
+  // const [browserLang, setBrowserLang] = useState("");
+  // const [showAlert, setShowAlert] = useState(false);
+  const [countdown, setCountdown] = useState(10); // countdown 10s and dismiss
   const currentLocale = useLocale();
+  const {
+    browserLang,
+    showLanguageAlert,
+    setBrowserLang,
+    setShowLanguageAlert,
+    dismissLanguageAlert,
+    getLangAlertDismissed,
+  } = useLocaleStore();
 
   useEffect(() => {
-    const detectedLang = navigator.language; // 获取完整语言代码，如 zh_HK
-    const storedDismiss = sessionStorage.getItem("langAlertDismissed");
+    const detectedLang = navigator.language; // Get full language code, e.g., zh_HK
+    const storedDismiss = getLangAlertDismissed();
 
     if (!storedDismiss) {
-      // 检查是否支持完整语言代码（如 zh_HK）
+      // Check if the full language code is supported (e.g., zh_HK)
       let supportedLang = routing.locales.find((l) => l === detectedLang);
 
-      // 如果不支持完整语言代码，检查主语言（如 zh）
+      // If full code isn't supported, check primary language (e.g., zh)
       if (!supportedLang) {
-        const mainLang = detectedLang.split("_")[0]; // 获取主语言，如 zh
+        const mainLang = detectedLang.split("_")[0]; // Get primary language code
         supportedLang = routing.locales.find((l) => l.startsWith(mainLang));
       }
 
-      // 如果仍然不支持，则默认切换到英语
-      setBrowserLang(supportedLang || "en-US");
-      setShowAlert(supportedLang !== currentLocale);
+      // If language still isn't supported, default to English
+      setBrowserLang(supportedLang || DEFAULT_LOCALE);
+      setShowLanguageAlert(supportedLang !== currentLocale);
     }
-  }, [currentLocale]);
+  }, [
+    currentLocale,
+    getLangAlertDismissed,
+    setBrowserLang,
+    setShowLanguageAlert,
+  ]);
 
-  const handleDismiss = () => {
-    sessionStorage.setItem("langAlertDismissed", "true");
-    setShowAlert(false);
-  };
+  // countdown
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
 
-  if (!showAlert) return null;
+    if (showLanguageAlert && countdown > 0) {
+      timer = setInterval(() => {
+        setCountdown((prev) => prev - 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [showLanguageAlert, countdown]);
+
+  // dismiss alert after countdown = 0
+  useEffect(() => {
+    if (countdown === 0 && showLanguageAlert) {
+      dismissLanguageAlert();
+    }
+  }, [countdown, showLanguageAlert, dismissLanguageAlert]);
+
+  if (!showLanguageAlert) return null;
+
+  const messages = require(`@/i18n/messages/${browserLang}.json`);
+  const alertMessages = messages.LanguageDetection;
 
   return (
     <Alert className="mb-4 relative">
@@ -47,17 +81,21 @@ export function LanguageDetectionAlert() {
         variant="ghost"
         size="icon"
         className="absolute right-2 top-2 h-6 w-6"
-        onClick={handleDismiss}
+        onClick={dismissLanguageAlert}
       >
         <X className="h-4 w-4" />
       </Button>
       <Globe className="h-4 w-4" />
-      <AlertTitle>{t("title")}</AlertTitle>
+      <AlertTitle>
+        {alertMessages.title}{" "}
+        <span className=" mt-2 text-sm text-muted-foreground">
+          {alertMessages.countdown.replace("{countdown}", countdown.toString())}
+        </span>
+      </AlertTitle>
       <AlertDescription>
-        {t("description")}{" "}
-        <Link href="/" locale={browserLang} className="text-primary underline">
-          {LOCALE_NAMES[browserLang]}
-        </Link>
+        <div className="flex items-center gap-2">
+          {alertMessages.description} <LocaleSwitcher />
+        </div>
       </AlertDescription>
     </Alert>
   );
