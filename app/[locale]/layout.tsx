@@ -34,9 +34,5 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  return (
-    <>
-      <main className="flex flex-col items-center py-6">{children}</main>
-    </>
-  );
+  return <>{children}</>;
 }

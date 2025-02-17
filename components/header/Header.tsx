@@ -19,7 +19,7 @@ const Header = () => {
   const t = useTranslations("Home");
   return (
     <header className="py-4">
-      <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-6">
+      <div className="mx-auto px-2 sm:px-4 lg:px-12">
         <nav className="relative z-50 flex justify-between">
           <div className="flex items-center md:gap-x-12">
             <Link href="/" className="flex items-center space-x-1 font-bold">
