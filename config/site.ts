@@ -1,3 +1,4 @@
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { SiteConfig } from "@/types/siteConfig";
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://nextforge.dev";
@@ -33,7 +34,7 @@ export const siteConfig: SiteConfig = {
   ...baseSiteConfig,
   openGraph: {
     type: "website",
-    locale: "en-US",
+    locale: DEFAULT_LOCALE,
     url: baseSiteConfig.url,
     title: baseSiteConfig.name,
     description: baseSiteConfig.description,
