@@ -19,17 +19,15 @@ export const routing = defineRouting({
   // auto detect locale
   localeDetection: false,
 
+  localePrefix: 'as-needed',
+
   // pathnames: {
-  // '/': '/',
+  //   '/': '/',
+  //   '/blogs': '/[locale]/blogs',
   //   '/about': {
-  //     'en-US': '/about',
-  //     'zh-CN': '/zh-CN/about',
-  //     'ja-JP': '/ja-JP/about'
-  //   },
-  //   '/blogs/[slug]': {
-  //     'en-US': '/blogs/[slug]',
-  //     'zh-CN': '/zh-CN/blogs/[slug]',
-  //     'ja-JP': '/ja-JP/blogs/[slug]'
+  //     'en-US': '/blogs',
+  //     'zh-CN': '/zh-CN/blogs',
+  //     'ja-JP': '/ja-JP/blogs',
   //   },
   // }
 });
