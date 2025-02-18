@@ -1,12 +1,12 @@
+import { Link as I18nLink } from "@/i18n/routing";
 import { BlogPost } from "@/types/blog";
 import dayjs from "dayjs";
 import Image from "next/image";
-import Link from "next/link";
 
-export function BlogCard({ post }: { post: BlogPost }) {
+export function BlogCard({ post, locale }: { post: BlogPost; locale: string }) {
   return (
-    <Link
-      href={`/blog/${post.slug}`}
+    <I18nLink
+      href={`/blogs/${post.slug}`}
       className="bg-transparent rounded-lg hover:underline"
     >
       <div className="relative rounded shadow-md  pt-[56.25%]">
@@ -25,6 +25,6 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {dayjs(post.date).format("YYYY-MM-DD")}
         </p>
       </div>
-    </Link>
+    </I18nLink>
   );
 }
