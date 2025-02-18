@@ -3,7 +3,7 @@ import { SiteConfig } from "@/types/siteConfig";
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://nextforge.dev";
 
 const baseSiteConfig = {
-  name: "Next.js 15 Starter",
+  name: "Next Forge - Next.js i18n starter",
   description:
     "Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
   url: BASE_URL,
