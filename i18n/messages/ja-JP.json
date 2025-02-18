@@ -4,6 +4,10 @@
     "description": "ブラウザの言語設定が現在のサイト言語と異なっています。いつでも言語を切り替えることができます 👉",
     "countdown": "閉じるまで {countdown} 秒"
   },
+  "Header": {
+    "blogs": "ブログ",
+    "about": "サイトについて"
+  },
   "Home": {
     "title": "Next.js 15 i18n Starter",
     "description": "多言語対応機能を搭載したNext.js 15スターターテンプレート。SEO最適化済みで、グローバル展開可能なウェブアプリを効率的に構築できます。",
