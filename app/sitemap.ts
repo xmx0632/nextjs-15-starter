@@ -1,5 +1,6 @@
 import { siteConfig } from '@/config/site'
 import { DEFAULT_LOCALE, LOCALES } from '@/i18n/routing'
+import { getPosts } from '@/lib/getBlogs'
 import { MetadataRoute } from 'next'
 
 const siteUrl = siteConfig.url
@@ -10,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
   const staticPages = [
     '',
-    // Add other static page paths
+    '/blogs',
   ]
 
   // Generate multilingual pages
@@ -34,17 +35,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1.0,
   })))
 
-  // If you have dynamic pages (like blogs), add them here
-  // const blogPosts = await getBlogPosts()
-  // const blogPages = blogPosts.map(post => ({
-  //   url: `${siteUrl}/blogs/${post.slug}`,
-  //   lastModified: post.updatedAt,
-  //   changeFrequency: 'weekly' as const,
-  //   priority: 0.7,
-  // }))
+  const blogPosts = await Promise.all(
+    LOCALES.map(async (locale) => {
+      const { posts } = await getPosts(locale)
+      return posts.map(post => ({
+        url: `${siteUrl}${locale === DEFAULT_LOCALE ? '' : `/${locale}`}/blogs${post.slug}`,
+        lastModified: post.metadata.updatedAt || post.date,
+        changeFrequency: 'daily' as const,
+        priority: 0.7,
+      }))
+    })
+  ).then(results => results.flat())
 
   return [
     ...pages,
-    // ...blogPages, // Uncomment if you have dynamic pages
+    ...blogPosts,
   ]
 }
