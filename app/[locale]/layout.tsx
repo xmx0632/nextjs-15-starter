@@ -1,9 +1,22 @@
+import BaiDuAnalytics from "@/app/BaiDuAnalytics";
+import GoogleAdsense from "@/app/GoogleAdsense";
+import GoogleAnalytics from "@/app/GoogleAnalytics";
+import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
+import { LanguageDetectionAlert } from "@/components/LanguageDetectionAlert";
+import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { siteConfig } from "@/config/site";
-import { routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE, routing } from "@/i18n/routing";
+import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
+import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
+
 export const metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
@@ -19,20 +32,52 @@ export const viewport: Viewport = {
   themeColor: siteConfig.themeColors,
 };
 
-type Params = Promise<{ locale: string }>;
-
 export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Params;
+  params: { locale: string };
 }) {
   const { locale } = await params;
+
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  return <>{children}</>;
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale || DEFAULT_LOCALE} suppressHydrationWarning>
+      <head />
+      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme={siteConfig.defaultNextTheme}
+            enableSystem
+          >
+            <LanguageDetectionAlert />
+            <Header />
+            <main className="flex flex-col items-center py-6">{children}</main>
+            <Footer />
+            <Analytics />
+            <TailwindIndicator />
+          </ThemeProvider>
+        </NextIntlClientProvider>
+        {process.env.NODE_ENV === "development" ? (
+          <></>
+        ) : (
+          <>
+            <BaiDuAnalytics />
+            <GoogleAnalytics />
+            <GoogleAdsense />
+          </>
+        )}
+      </body>
+    </html>
+  );
 }
