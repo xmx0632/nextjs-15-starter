@@ -6,7 +6,8 @@
   },
   "Header": {
     "blogs": "博客",
-    "about": "关于"
+    "about": "关于",
+    "sourceCode": "源码"
   },
   "Home": {
     "title": "Next Forge",

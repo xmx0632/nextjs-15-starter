@@ -6,7 +6,8 @@
   },
   "Header": {
     "blogs": "ブログ",
-    "about": "サイトについて"
+    "about": "サイトについて",
+    "sourceCode": "ソースコード"
   },
   "Home": {
     "title": "Next Forge",
