@@ -15,7 +15,7 @@ type MetadataProps = {
 }
 
 export async function constructMetadata({
-  page = 'default',
+  page = 'Home',
   title,
   description,
   images = [],
@@ -25,14 +25,14 @@ export async function constructMetadata({
   canonicalUrl,
 }: MetadataProps): Promise<Metadata> {
   // get translations
-  const t = await getTranslations({ locale, namespace: 'Home' })
+  const t = await getTranslations({ locale, namespace: page })
 
   // get page specific metadata translations
   const pageTitle = title || t(`title`)
   const pageDescription = description || t(`description`)
 
   // build full title
-  const finalTitle = page === 'default'
+  const finalTitle = page === 'Home'
     ? `${pageTitle} - ${t('tagLine')}`
     : `${pageTitle} | ${t('title')}`
 
