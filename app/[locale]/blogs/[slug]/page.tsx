@@ -14,8 +14,7 @@ type Params = Promise<{
 }>;
 
 type MetadataProps = {
-  params: { locale: string; slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Params;
 };
 
 export async function generateMetadata({

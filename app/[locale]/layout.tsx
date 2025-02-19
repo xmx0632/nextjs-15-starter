@@ -19,8 +19,7 @@ import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 
 type MetadataProps = {
-  params: { locale: string; slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata({

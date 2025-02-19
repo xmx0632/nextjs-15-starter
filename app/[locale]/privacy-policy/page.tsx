@@ -32,9 +32,12 @@ async function getMDXContent(locale: string) {
   }
 }
 
+type Params = Promise<{
+  locale: string;
+}>;
+
 type MetadataProps = {
-  params: { locale: string; slug: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
+  params: Params;
 };
 
 export async function generateMetadata({
@@ -51,10 +54,6 @@ export async function generateMetadata({
     path: `/privacy-policy`,
   });
 }
-
-type Params = Promise<{
-  locale: string;
-}>;
 
 export default async function AboutPage({ params }: { params: Params }) {
   const { locale } = await params;
