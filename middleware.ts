@@ -1,5 +1,5 @@
 import createMiddleware from 'next-intl/middleware';
-import { routing } from './i18n/routing';
+import { LOCALES, routing } from './i18n/routing';
 
 export default createMiddleware(routing);
 
@@ -10,7 +10,7 @@ export const config = {
 
     // Set a cookie to remember the previous locale for
     // all requests that have a locale prefix
-    '/(en-US|zh-CN|ja-JP)/:path*',
+    `/(${LOCALES.join('|')})/:path*`,
 
     // Enable redirects that add missing locales
     // (e.g. `/pathnames` -> `/en/pathnames`)
