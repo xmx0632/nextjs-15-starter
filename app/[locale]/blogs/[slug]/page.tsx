@@ -40,8 +40,8 @@ type Params = Promise<{
 }>;
 
 export default async function BlogPage({ params }: { params: Params }) {
-  const { slug } = await params;
-  let { posts }: { posts: BlogPost[] } = await getPosts();
+  const { locale, slug } = await params;
+  let { posts }: { posts: BlogPost[] } = await getPosts(locale);
 
   const post = posts.find((item) => item.slug === "/" + slug);
 
