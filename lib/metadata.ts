@@ -4,9 +4,9 @@ import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
 type MetadataProps = {
-  page?: string // 页面标识符，用于获取特定页面的翻译
-  title?: string // 自定义标题，覆盖翻译
-  description?: string // 自定义描述，覆盖翻译
+  page?: string
+  title?: string
+  description?: string
   images?: string[]
   noIndex?: boolean
   locale: Locale
