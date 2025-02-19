@@ -73,11 +73,11 @@ const MDXComponents: MDXComponentsProps = {
     />
   ),
   pre: (props) => (
-    <pre className="bg-gray-600 rounded p-4 overflow-x-auto my-2" {...props} />
+    <pre className="rounded p-4 overflow-x-auto my-2" {...props} />
   ),
   blockquote: (props) => (
     <blockquote
-      className="pl-4 border-l-4 border-gray-200 my-4 text-gray-300 italic"
+      className="pl-4 border-l-4 my-4 text-gray-800 dark:text-gray-200 italic"
       {...props}
     />
   ),
@@ -90,16 +90,13 @@ const MDXComponents: MDXComponentsProps = {
   ),
   table: (props) => (
     <div className="my-6 w-full overflow-x-auto">
-      <table
-        className="w-full text-gray-200 bg-gray-800 shadow-lg rounded-lg"
-        {...props}
-      />
+      <table className="w-full shadow-lg rounded-lg" {...props} />
     </div>
   ),
-  tr: (props) => <tr className="border-t border-gray-500" {...props} />,
+  tr: (props) => <tr className="border-t" {...props} />,
   th: (props) => (
     <th
-      className="px-4 py-2 font-bold text-left bg-gray-900 text-white [&[align=center]]:text-center [&[align=right]]:text-right"
+      className="px-4 py-2 font-bold text-left [&[align=center]]:text-center [&[align=right]]:text-right"
       {...props}
     />
   ),
