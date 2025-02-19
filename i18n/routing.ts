@@ -20,16 +20,6 @@ export const routing = defineRouting({
   localeDetection: false,
 
   localePrefix: 'as-needed',
-
-  // pathnames: {
-  //   '/': '/',
-  //   '/blogs': '/[locale]/blogs',
-  //   '/about': {
-  //     'en-US': '/blogs',
-  //     'zh-CN': '/zh-CN/blogs',
-  //     'ja-JP': '/ja-JP/blogs',
-  //   },
-  // }
 });
 
 // Lightweight wrappers around Next.js' navigation APIs

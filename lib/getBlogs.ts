@@ -9,7 +9,7 @@ const POSTS_BATCH_SIZE = 10;
 export async function getPosts(locale: string = DEFAULT_LOCALE): Promise<{ posts: BlogPost[] }> {
   const postsDirectory = path.join(process.cwd(), 'blogs', locale);
 
-  // 确保目录存在
+  // is directory exist
   if (!fs.existsSync(postsDirectory)) {
     return { posts: [] };
   }
@@ -19,7 +19,7 @@ export async function getPosts(locale: string = DEFAULT_LOCALE): Promise<{ posts
 
   let allPosts: BlogPost[] = [];
 
-  // 分批次读取文件
+  // read file by batch
   for (let i = 0; i < filenames.length; i += POSTS_BATCH_SIZE) {
     const batchFilenames = filenames.slice(i, i + POSTS_BATCH_SIZE);
 
@@ -31,7 +31,7 @@ export async function getPosts(locale: string = DEFAULT_LOCALE): Promise<{ posts
         const { data, content } = matter(fileContents);
 
         return {
-          locale, // 使用传入的 locale 参数
+          locale, // use locale parameter
           title: data.title,
           description: data.description,
           image: data.image || '',
@@ -49,10 +49,10 @@ export async function getPosts(locale: string = DEFAULT_LOCALE): Promise<{ posts
     allPosts.push(...batchPosts);
   }
 
-  // 过滤掉非发布状态的文章
+  // filter out non-published articles
   allPosts = allPosts.filter(post => post.visible === 'published');
 
-  // 将帖子按照是否置顶(pin)和日期排序
+  // sort posts by pin and date
   allPosts = allPosts.sort((a, b) => {
     if (a.pin !== b.pin) {
       return (b.pin ? 1 : 0) - (a.pin ? 1 : 0);
