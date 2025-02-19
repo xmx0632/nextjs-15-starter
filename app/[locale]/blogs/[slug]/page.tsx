@@ -1,43 +1,50 @@
 import { Callout } from "@/components/mdx/Callout";
 import MDXComponents from "@/components/mdx/MDXComponents";
+import { Locale } from "@/i18n/routing";
 import { getPosts } from "@/lib/getBlogs";
+import { constructMetadata } from "@/lib/metadata";
 import { BlogPost } from "@/types/blog";
+import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
-
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug: string[] };
-//   }) {
-//   const { slug } = await params
-//   const currentSlug = slug ? "/blogs" + "/" + slug.join("/") : "/blogs";
-//   let { posts }: { posts: MdxData[] } = await getPosts();
-//   const post = posts.find((item) => item.slug === currentSlug);
-
-//   return {
-//     ...siteConfig,
-//     title: `${post?.title || "404"} | ${siteConfig.name}`,
-//     description: post?.description || siteConfig.description,
-//     openGraph: {
-//       ...siteConfig.openGraph,
-//       title: `${post?.title || "404"} | ${siteConfig.name}`,
-//       url: `${siteConfig.url}${currentSlug}`,
-//       description: post?.description || siteConfig.description,
-//     },
-//     twitter: {
-//       ...siteConfig.twitter,
-//       title: `${post?.title || "404"} | ${siteConfig.name}`,
-//       site: `${siteConfig.url}${currentSlug}`,
-//       description: post?.description || siteConfig.description,
-//     },
-//   };
-// }
 
 type Params = Promise<{
   locale: string;
   slug: string;
 }>;
+
+type MetadataProps = {
+  params: { locale: string; slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+  let { posts }: { posts: BlogPost[] } = await getPosts(locale);
+  const post = posts.find((post) => post.slug === "/" + slug);
+
+  if (!post) {
+    return constructMetadata({
+      title: "404",
+      description: "Page not found",
+      noIndex: true,
+      locale: locale as Locale,
+      path: `/blogs/${slug}`,
+    });
+  }
+
+  return constructMetadata({
+    page: "blogs",
+    title: post.title,
+    description: post.description,
+    images: post.image ? [post.image] : [],
+    locale: locale as Locale,
+    path: `/blogs/${slug}`,
+    // canonicalUrl: `/blogs/${slug}`,
+  });
+}
 
 export default async function BlogPage({ params }: { params: Params }) {
   const { locale, slug } = await params;

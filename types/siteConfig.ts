@@ -12,7 +12,6 @@ export type SiteConfig = {
   tagLine: string
   description: string
   url: string
-  keywords: string[]
   authors: AuthorsConfig[]
   socialLinks: {
     github: string
@@ -21,7 +20,6 @@ export type SiteConfig = {
     email: string
   }
   creator: string
-  metadataBase: URL | string
   themeColors?: string | ThemeColor[]
   defaultNextTheme?: string
   icons: {
@@ -29,21 +27,4 @@ export type SiteConfig = {
     shortcut?: string
     apple?: string
   }
-  openGraph: {
-    type: string
-    locale: string
-    url: string
-    title: string
-    description: string
-    siteName: string
-    images?: string[]
-  },
-  twitter: {
-    card: string
-    title: string
-    site: string
-    description: string
-    images?: string[]
-    creator: string
-  },
 }

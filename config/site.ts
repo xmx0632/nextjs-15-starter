@@ -1,4 +1,3 @@
-import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { SiteConfig } from "@/types/siteConfig";
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://nextforge.dev";
@@ -10,14 +9,12 @@ const BSKY_URL = 'https://bsky.app/profile/judewei.bsky.social'
 const EMAIL_URL = 'mailto:weijunext@gmail.com'
 const GITHUB_URL = 'https://github.com/weijunext'
 
-const baseSiteConfig = {
+export const siteConfig: SiteConfig = {
   name: "Next Forge",
   tagLine: 'Next.js i18n starter',
   description:
     "Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
   url: BASE_URL,
-  metadataBase: new URL(BASE_URL),
-  keywords: [],
   authors: [
     {
       name: "weijunext",
@@ -40,26 +37,5 @@ const baseSiteConfig = {
     icon: "/favicon.ico",
     shortcut: "/logo.png",
     apple: "/logo.png", // apple-touch-icon.png
-  },
-}
-
-export const siteConfig: SiteConfig = {
-  ...baseSiteConfig,
-  openGraph: {
-    type: "website",
-    locale: DEFAULT_LOCALE,
-    url: baseSiteConfig.url,
-    title: baseSiteConfig.name,
-    description: baseSiteConfig.description,
-    siteName: baseSiteConfig.name,
-    images: [`${baseSiteConfig.url}/og.png`],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: baseSiteConfig.name,
-    site: baseSiteConfig.url,
-    description: baseSiteConfig.description,
-    images: [`${baseSiteConfig.url}/og.png`],
-    creator: baseSiteConfig.creator,
   },
 }
