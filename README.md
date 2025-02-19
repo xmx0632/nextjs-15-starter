@@ -1,72 +1,146 @@
-🌍 *[English](README.md) ∙ [简体中文](README-zh.md)*
+🌍 *[English](README.md) ∙ [简体中文](README_zh.md) ∙ [日本語](README_ja.md)*
 
+# Next Forge - Multilingual Next.js 15 Starter
 
-# [Next.js 15 Starter](https://starter.weijunext.com/)
+A feature-rich Next.js 15 multilingual starter template to help you quickly build globally-ready websites.
 
-Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.
+- [👉 Source Code](https://github.com/weijunext/nextjs-15-starter)
+- [👉 Live Demo](https://nextforge.dev/)
 
-Demo address：https://starter.weijunext.com
+## ✨ Features
 
-**More features are in development, aiming to complete the full development of the starter this year.**
+- 🌐 Built-in i18n support (English, Chinese, Japanese)
+- 🎨 Modern UI design with Tailwind CSS
+- 🌙 Dark/Light theme toggle
+- 📱 Responsive layout
+- 📝 MDX blog system 
+- 🔍 SEO optimization
+- 📊 Integrated analytics tools
+  - Google Analytics
+  - Baidu Analytics
+  - Google Adsense
+  - Vercel Analytics
 
-[![Next.js 15 Starter](./public/og.png)](https://www.starter.weijunext.com/)
+## 🚀 Quick Start
 
-## Tech Stack 
+1. Clone the repository:
+```bash
+git clone https://github.com/weijunext/nextjs-15-starter.git
+```
 
-Next.js 15 Starter is built on the following stack:
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn
+# or
+pnpm install
+```
 
-- Next.js – Frontend/Backend
-- TailwindCSS – Styles
-- Shadcn – UI
-- Google Analytics - Analytics([How to use?](https://weijunext.com/article/979b9033-188c-4d88-bfff-6cf74d28420d))
-- Vercel - Hosting
+3. Copy environment variables:
+```bash
+cp .env.example .env
+```
 
-
-## Running Locally
-
-After cloning the repo, you need to copy the `.env.example` file to create a `.env` file and fill in the required fields.
-
-Then, run the application in the command line and it will be available at `http://localhost:3000`.
-
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-## Build Your Project
+Visit http://localhost:3000 to view your application.
 
-Edit these files:
-- `.env` or `.env.local`
-- `config/site.ts`, fill in your website information 
-- `public`, change logo file
-- `public/robots.txt`
-- `app/sitemap.ts`
-s
+## ⚙️ Configuration
 
+1. Basic Setup
+   - Edit `config/site.ts` for website information
+   - Update icons and logo in `public/`
+   - Configure `app/sitemap.ts` for sitemap
+   - Update `app/robots.ts` for robots.txt
+
+2. i18n Setup
+   - Add/modify language files in `i18n/messages/`
+   - Configure supported languages in `i18n/routing.ts`
+   - Set up i18n routing in `middleware.ts`
+   - Create pages under `app/[locale]/`
+   - Use the `Link` component from `i18n/routing.ts` instead of Next.js default
+
+## 📝 Content Management
+
+### Blog Posts
+Create MDX files in `blogs/[locale]` with the following format:
+
+```markdown
+---
+title: Post Title
+description: Post Description
+image: /image.png
+slug: /url-path
+tags: tag1,tag2
+date: 2025-02-20
+visible: published
+pin: true
+---
+
+Post content...
+```
+
+Reference `types/blog.ts` for supported fields.
+
+### Static Pages
+Manage static page content in `content/[page]/[locale].mdx`.
+
+## 🔍 SEO Optimization
+
+Built-in comprehensive SEO features:
+   - Server-side rendering and static generation
+   - Automatic sitemap.xml generation
+   - robots.txt configuration
+   - Optimized metadata
+   - Open Graph support
+   - Multilingual SEO support
+
+## 📊 Analytics
+
+Enable analytics by adding IDs in `.env`:
+```
+NEXT_PUBLIC_GOOGLE_ANALYTICS=
+NEXT_PUBLIC_BAIDU_TONGJI=
+NEXT_PUBLIC_GOOGLE_ADSENSE=
+```
+
+## 🛠️ Tech Stack
+
+- Next.js 15
+- TypeScript
+- Tailwind CSS
+- Shadcn/ui
+- next-intl
+- MDX
+- Zustand
+- Vercel
 
 ## One-Click Deploy
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/nextjs-15-starter&project-name=&repository-name=nextjs-15-starter&demo-title=Nextjs15Starter&demo-description=Nextjs%2015%20starter.&demo-url=https://nextforge.dev&demo-image=https://nextforge.dev/og.png)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/clean-nextjs-starter&project-name=&repository-name=clean-nextjs-starter&demo-title=CleanNextjsStarter&demo-description=Clean%20nextjs%20starter.&demo-url=https://starter.weijunext.com&demo-image=https://starter.weijunext.com/og.png)
+## 📄 License
 
-## About Me
+MIT
 
-**Full-Stack Engineer, Open-Source Next.js Artist & AI Enthusiast.**
+## 🤝 Contributing
 
-**全栈工程师，Next.js 开源手艺人，AI降临派。**
+Issues and Pull Requests are welcome!
 
-[My Blog](https://weijunext.com)  
-[Github](https://github.com/weijunext)  
-[Twitter/X - Zh](https://twitter.com/weijunext)  
-[Twitter/X - En](https://twitter.com/judewei_dev)  
-[Medium](https://medium.com/@weijunext)  
-[掘金](https://juejin.cn/user/26044008768029)  
-[知乎](https://www.zhihu.com/people/mo-mo-mo-89-12-11)  
-[微信交流群](https://weijunext.com/make-a-friend)  
+## About the Author
 
-If this project is helpful to you, star the repo and buy me a coffee, thank you.
+Next.js full-stack specialist providing expert services in project development, performance optimization, and SEO improvement.
 
-<a href="https://www.buymeacoffee.com/weijunext" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;" ></a>
+For consulting and training opportunities, reach out at weijunext@gmail.com
 
+- [Github](https://github.com/weijunext)
+- [Bento](https://bento.me/weijunext)
+- [Twitter/X](https://twitter.com/judewei_dev)
 
-<img src="./public/zs.jpeg" alt="赞赏作者" style="height: 200px; width: 200px">
+<a href="https://www.buymeacoffee.com/weijunext" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G6TWWMG)
