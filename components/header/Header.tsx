@@ -14,7 +14,7 @@ const Header = () => {
     <header className="py-4">
       <div className="mx-auto px-2 sm:px-4 lg:px-12">
         <nav className="relative z-50 flex justify-between">
-          <div className="flex items-center md:gap-x-12">
+          <div className="flex items-center md:gap-x-12 flex-1">
             <I18nLink
               href="/"
               className="flex items-center space-x-1 font-bold"
@@ -33,9 +33,11 @@ const Header = () => {
             <div className="hidden md:flex md:gap-x-6"></div>
           </div>
 
-          <HeaderLinks />
+          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-center">
+            <HeaderLinks />
+          </div>
 
-          <div className="flex items-center gap-x-2 md:gap-x-4 lg:gap-x-6">
+          <div className="flex items-center gap-x-2 md:gap-x-4 lg:gap-x-6 flex-1 justify-end">
             {/* PC */}
             <div className="hidden md:flex items-center gap-x-4">
               <LocaleSwitcher />
