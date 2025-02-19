@@ -86,6 +86,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <I18nLink
                       href={link.href}
+                      title={link.label}
                       className=" hover:text-white transition-colors"
                       target={link.target || ""}
                       rel={link.rel || ""}
@@ -106,6 +107,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
+                      title={link.label}
                       className=" hover:text-white transition-colors"
                       target={link.target || ""}
                       rel={link.rel || ""}
@@ -126,6 +128,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
+                      title={link.label}
                       className=" hover:text-white transition-colors"
                       target={link.target || ""}
                       rel={link.rel || ""}
@@ -143,6 +146,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <I18nLink
                       href={link.href}
+                      title={link.label}
                       className=" hover:text-white transition-colors"
                       target={link.target || ""}
                       rel={link.rel || ""}
