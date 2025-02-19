@@ -10,8 +10,6 @@ import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
 export function LanguageDetectionAlert() {
-  // const [browserLang, setBrowserLang] = useState("");
-  // const [showAlert, setShowAlert] = useState(false);
   const [countdown, setCountdown] = useState(10); // countdown 10s and dismiss
   const currentLocale = useLocale();
   const {

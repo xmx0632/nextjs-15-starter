@@ -13,11 +13,6 @@ const Heading: React.FC<HeadingProps> = ({ level, className, children }) => {
   const HeadingTag = `h${level}` as keyof React.ElementType;
   const headingId = children?.toString() ?? "";
 
-  // return (
-  //   <HeadingTag id={headingId} className={className}>
-  //     {children}
-  //   </HeadingTag>
-  // );
   return React.createElement(
     HeadingTag,
     { id: headingId, className },
