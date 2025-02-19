@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 //   params: { slug: string[] };
 //   }) {
 //   const { slug } = await params
-//   const currentSlug = slug ? "/docs" + "/" + slug.join("/") : "/docs";
+//   const currentSlug = slug ? "/blogs" + "/" + slug.join("/") : "/blogs";
 //   let { posts }: { posts: MdxData[] } = await getPosts();
 //   const post = posts.find((item) => item.slug === currentSlug);
 
@@ -84,9 +84,9 @@ export async function generateStaticParams() {
   posts = posts.filter((post) => post.slug);
 
   return posts.map((post) => {
-    // Remove the leading '/docs' from the slug and split the rest into an array
+    // Remove the leading '/blogs' from the slug and split the rest into an array
     const slugArray = post.slug
-      ?.replace(/^\/docs/, "")
+      ?.replace(/^\/blogs/, "")
       .split("/")
       .filter(Boolean);
 
