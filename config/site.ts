@@ -5,8 +5,14 @@ export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://nextforge.d
 
 export const SOURCE_CODE_URL = "https://github.com/weijunext/nextjs-15-starter";
 
+const TWITTER_URL = 'https://x.com/weijunext'
+const BSKY_URL = 'https://bsky.app/profile/judewei.bsky.social'
+const EMAIL_URL = 'mailto:weijunext@gmail.com'
+const GITHUB_URL = 'https://github.com/weijunext'
+
 const baseSiteConfig = {
-  name: "Next Forge - Next.js i18n starter",
+  name: "Next Forge",
+  tagLine: 'Next.js i18n starter',
   description:
     "Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
   url: BASE_URL,
@@ -16,10 +22,15 @@ const baseSiteConfig = {
     {
       name: "weijunext",
       url: "https://weijunext.com",
-      twitter: 'https://x.com/weijunext',
     }
   ],
   creator: '@weijunext',
+  socialLinks: {
+    bluesky: BSKY_URL,
+    twitter: TWITTER_URL,
+    email: EMAIL_URL,
+    github: GITHUB_URL,
+  },
   themeColors: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },

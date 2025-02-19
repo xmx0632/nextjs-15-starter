@@ -2,7 +2,6 @@
 export type AuthorsConfig = {
   name: string
   url: string
-  twitter?: string
 }
 export type ThemeColor = {
   media: string
@@ -10,10 +9,17 @@ export type ThemeColor = {
 }
 export type SiteConfig = {
   name: string
+  tagLine: string
   description: string
   url: string
   keywords: string[]
   authors: AuthorsConfig[]
+  socialLinks: {
+    github: string
+    bluesky: string
+    twitter: string
+    email: string
+  }
   creator: string
   metadataBase: URL | string
   themeColors?: string | ThemeColor[]
