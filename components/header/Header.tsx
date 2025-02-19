@@ -33,9 +33,7 @@ const Header = () => {
             <div className="hidden md:flex md:gap-x-6"></div>
           </div>
 
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-center">
-            <HeaderLinks />
-          </div>
+          <HeaderLinks />
 
           <div className="flex items-center gap-x-2 md:gap-x-4 lg:gap-x-6 flex-1 justify-end">
             {/* PC */}

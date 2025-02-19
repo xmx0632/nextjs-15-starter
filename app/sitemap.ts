@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     '',
     '/blogs',
+    '/about',
   ]
 
   // Generate multilingual pages
@@ -23,17 +24,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: page === '' ? 1.0 : 0.8,
     }))
   })
-
-  // Not multiple pages
-  const defaultLocalesPages = [
-    '/about',
-  ]
-  pages.push(...defaultLocalesPages.map(page => ({
-    url: `${siteUrl}${page}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as ChangeFrequency,
-    priority: 1.0,
-  })))
 
   const blogPosts = await Promise.all(
     LOCALES.map(async (locale) => {
