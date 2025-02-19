@@ -18,5 +18,17 @@
   "Blogs": {
     "title": "ブログ一覧",
     "description": "ブログ投稿の一覧"
+  },
+  "About": {
+    "title": "サイトについて",
+    "description": "サイトについて"
+  },
+  "TermsOfService": {
+    "title": "サービス利用規約",
+    "description": "サービス利用規約"
+  },
+  "PrivacyPolicy": {
+    "title": "プライバシーポリシー",
+    "description": "プライバシーポリシー"
   }
 }

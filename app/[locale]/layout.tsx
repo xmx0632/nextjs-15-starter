@@ -6,28 +6,39 @@ import Header from "@/components/header/Header";
 import { LanguageDetectionAlert } from "@/components/LanguageDetectionAlert";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { siteConfig } from "@/config/site";
-import { DEFAULT_LOCALE, routing } from "@/i18n/routing";
+import { DEFAULT_LOCALE, Locale, routing } from "@/i18n/routing";
+import { constructMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
 import { Analytics } from "@vercel/analytics/react";
-import { Viewport } from "next";
+import { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 
-export const metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: siteConfig.authors,
-  creator: siteConfig.creator,
-  icons: siteConfig.icons,
-  metadataBase: siteConfig.metadataBase,
-  openGraph: siteConfig.openGraph,
-  twitter: siteConfig.twitter,
+type MetadataProps = {
+  params: { locale: string; slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Home" });
+
+  return constructMetadata({
+    page: "Home",
+    title: t("title"),
+    description: t("description"),
+    locale: locale as Locale,
+    path: `/`,
+    // canonicalUrl: `/blogs/${slug}`,
+  });
+}
+
 export const viewport: Viewport = {
   themeColor: siteConfig.themeColors,
 };

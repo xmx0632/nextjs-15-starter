@@ -1,8 +1,31 @@
 import { BlogCard } from "@/app/[locale]/blogs/BlogCard";
+import { Locale } from "@/i18n/routing";
 import { getPosts } from "@/lib/getBlogs";
+import { constructMetadata } from "@/lib/metadata";
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 type Params = Promise<{ locale: string }>;
+
+type MetadataProps = {
+  params: { locale: string; slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Blogs" });
+
+  return constructMetadata({
+    page: "Blogs",
+    title: t("title"),
+    description: t("description"),
+    locale: locale as Locale,
+    path: `/blogs`,
+  });
+}
 
 export default async function Page({ params }: { params: Params }) {
   const { locale } = await params;

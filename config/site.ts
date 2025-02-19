@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
   name: "Next Forge",
   tagLine: 'Next.js i18n starter',
   description:
-    "Next.js 15 Starter is a meticulously designed Next.js starter template aimed at providing developers with a clean, efficient, and scalable foundation for quickly launching.",
+    "A multilingual Next.js 15 starter with built-in i18n support. Launch your global-ready web application with a clean, efficient, and SEO-friendly foundation.",
   url: BASE_URL,
   authors: [
     {

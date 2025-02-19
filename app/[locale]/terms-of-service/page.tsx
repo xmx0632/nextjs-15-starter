@@ -1,5 +1,9 @@
 import MDXComponents from "@/components/mdx/MDXComponents";
+import { Locale } from "@/i18n/routing";
+import { constructMetadata } from "@/lib/metadata";
 import fs from "fs/promises";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import path from "path";
 import remarkGfm from "remark-gfm";
@@ -28,12 +32,25 @@ async function getMDXContent(locale: string) {
   }
 }
 
-// export async function generateMetadata() {
-//   return {
-//     ...siteConfig,
-//     title: `About | ${t("title")}`,
-//   };
-// }
+type MetadataProps = {
+  params: { locale: string; slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({
+  params,
+}: MetadataProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "TermsOfService" });
+
+  return constructMetadata({
+    page: "TermsOfService",
+    title: t("title"),
+    description: t("description"),
+    locale: locale as Locale,
+    path: `/terms-of-service`,
+  });
+}
 
 type Params = Promise<{
   locale: string;
