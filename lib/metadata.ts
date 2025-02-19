@@ -25,7 +25,7 @@ export async function constructMetadata({
   canonicalUrl,
 }: MetadataProps): Promise<Metadata> {
   // get translations
-  const t = await getTranslations({ locale, namespace: page })
+  const t = await getTranslations({ locale, namespace: 'Home' })
 
   // get page specific metadata translations
   const pageTitle = title || t(`title`)
