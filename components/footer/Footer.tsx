@@ -1,5 +1,5 @@
 import { TwitterX } from "@/components/social-icons/icons";
-import { siteConfig, SOURCE_CODE_URL } from "@/config/site";
+import { siteConfig } from "@/config/site";
 import { Link as I18nLink } from "@/i18n/routing";
 import { GithubIcon, MailIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -77,104 +77,60 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
-              <h3 className="text-white text-lg font-semibold mb-4">
-                Quick Links
-              </h3>
-              <ul className="space-y-2 text-sm">
-                {quickLinks.map((link) => (
-                  <li key={link.href}>
-                    <I18nLink
-                      href={link.href}
-                      title={link.label}
-                      className=" hover:text-white transition-colors"
-                      target={link.target || ""}
-                      rel={link.rel || ""}
-                    >
-                      {link.label}
-                    </I18nLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-white text-lg font-semibold mb-4">
-                Open Source
-              </h3>
-              <ul className="space-y-2 text-sm">
-                {openSourceLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      title={link.label}
-                      className=" hover:text-white transition-colors"
-                      target={link.target || ""}
-                      rel={link.rel || ""}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-white text-lg font-semibold mb-4">
-                Other Products
-              </h3>
-              <ul className="space-y-2 text-sm">
-                {productLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      title={link.label}
-                      className=" hover:text-white transition-colors"
-                      target={link.target || ""}
-                      rel={link.rel || ""}
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-white text-lg font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm">
-                {legal.map((link) => (
-                  <li key={link.href}>
-                    <I18nLink
-                      href={link.href}
-                      title={link.label}
-                      className=" hover:text-white transition-colors"
-                      target={link.target || ""}
-                      rel={link.rel || ""}
-                    >
-                      {link.label}
-                    </I18nLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {footerLinks.map((section) => (
+              <div key={section.title}>
+                <h3 className="text-white text-lg font-semibold mb-4">
+                  {section.title}
+                </h3>
+                <ul className="space-y-2 text-sm">
+                  {section.links.map((link) => (
+                    <li key={link.href}>
+                      {link.href.startsWith("/") ? (
+                        <I18nLink
+                          href={link.href}
+                          title={link.label}
+                          className="hover:text-white transition-colors"
+                          target={link.target || ""}
+                          rel={link.rel || ""}
+                        >
+                          {link.label}
+                        </I18nLink>
+                      ) : (
+                        <a
+                          href={link.href}
+                          title={link.label}
+                          className="hover:text-white transition-colors"
+                          target={link.target || ""}
+                          rel={link.rel || ""}
+                        >
+                          {link.label}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </footer>
       <div className="mt-2 p-4 flex justify-center items-center border-t border-gray-700 text-center text-sm text-gray-400">
-        <a
-          href={SOURCE_CODE_URL}
-          title="View on GitHub"
-          target="_blank"
-          rel="noreferrer nofollow noopener"
+        <I18nLink
+          href="/about"
+          title="About"
+          className=" hover:text-white transition-colors"
         >
-          <p>
-            &copy; {new Date().getFullYear()} Next Forge. All rights reserved.
-          </p>
-        </a>
+          &copy; {new Date().getFullYear()} Next Forge. All rights reserved.
+        </I18nLink>
       </div>
     </div>
   );
 }
+
+type FooterLink = {
+  title: string;
+  links: Link[];
+};
 
 type Link = {
   href: string;
@@ -183,74 +139,84 @@ type Link = {
   rel?: string;
 };
 
-const quickLinks: Link[] = [
-  { href: "/", label: "English" },
-  { href: "/zh-CN", label: "中文" },
-  { href: "/ja-JP", label: "日本語" },
-];
-
-const openSourceLinks: Link[] = [
+const footerLinks: FooterLink[] = [
   {
-    href: "https://github.com/weijunext/nextjs-15-starter",
-    label: "Next Forge",
-    rel: "noopener noreferrer nofollow",
-    target: "_blank",
+    title: "Languages",
+    links: [
+      { href: "/", label: "English" },
+      { href: "/zh-CN", label: "中文" },
+      { href: "/ja-JP", label: "日本語" },
+    ],
   },
   {
-    href: "https://github.com/weijunext/landing-page-boilerplate",
-    label: "Landing Page Boilerplate",
-    rel: "noopener noreferrer nofollow",
-    target: "_blank",
+    title: "Open Source",
+    links: [
+      {
+        href: "https://github.com/weijunext/nextjs-15-starter",
+        label: "Next Forge",
+        rel: "noopener noreferrer nofollow",
+        target: "_blank",
+      },
+      {
+        href: "https://github.com/weijunext/landing-page-boilerplate",
+        label: "Landing Page Boilerplate",
+        rel: "noopener noreferrer nofollow",
+        target: "_blank",
+      },
+      {
+        href: "https://github.com/weijunext/smart-excel-ai",
+        label: "SaaS Template",
+        rel: "noopener noreferrer nofollow",
+        target: "_blank",
+      },
+      {
+        href: "https://github.com/weijunext/weekly-boilerplate",
+        label: "Blog Boilerplate",
+        rel: "noopener noreferrer nofollow",
+        target: "_blank",
+      },
+    ],
   },
   {
-    href: "https://github.com/weijunext/smart-excel-ai",
-    label: "SaaS Template",
-    rel: "noopener noreferrer nofollow",
-    target: "_blank",
+    title: "Other Products",
+    links: [
+      {
+        href: "https://nextidea.dev/",
+        label: "Next Idea",
+        rel: "noopener noreferrer",
+        target: "_blank",
+      },
+      {
+        href: "https://newtab.nextidea.dev/",
+        label: "Next Idea NewTab",
+        rel: "noopener noreferrer",
+        target: "_blank",
+      },
+      {
+        href: "https://ogimage.click/",
+        label: "OG Image Generator",
+        rel: "noopener noreferrer",
+        target: "_blank",
+      },
+      {
+        href: "https://nextjscn.org/",
+        label: "Next.js 中文文档",
+        rel: "noopener noreferrer",
+        target: "_blank",
+      },
+      {
+        href: "https://weijunext.com/",
+        label: "J实验室",
+        rel: "noopener noreferrer",
+        target: "_blank",
+      },
+    ],
   },
   {
-    href: "https://github.com/weijunext/weekly-boilerplate",
-    label: "Blog Boilerplate",
-    rel: "noopener noreferrer nofollow",
-    target: "_blank",
+    title: "Legal & Privacy",
+    links: [
+      { href: "/privacy-policy", label: "Privacy Policy" },
+      { href: "/terms-of-service", label: "Terms of Service" },
+    ],
   },
-];
-
-const productLinks: Link[] = [
-  {
-    href: "https://nextidea.dev/",
-    label: "Next Idea",
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-  {
-    href: "https://newtab.nextidea.dev/",
-    label: "Next Idea NewTab",
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-  {
-    href: "https://ogimage.click/",
-    label: "OG Image Generator",
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-  {
-    href: "https://nextjscn.org/",
-    label: "Next.js 中文文档",
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-  {
-    href: "https://weijunext.com/",
-    label: "J实验室",
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-];
-
-const legal: Link[] = [
-  { href: "/about", label: "About" },
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-service", label: "Terms of Service" },
 ];
