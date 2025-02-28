@@ -8,7 +8,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
-  DEFAULT_LOCALE,
   Locale,
   LOCALE_NAMES,
   routing,
@@ -43,8 +42,9 @@ export default function LocaleSwitcher() {
         // @ts-expect-error -- TypeScript will validate that only known `params`
         // are used in combination with a given `pathname`. Since the two will
         // always match for the current route, we can skip runtime checks.
-        { pathname: "/", params: params || {} },
-        { locale: nextLocale === DEFAULT_LOCALE ? "/" : nextLocale }
+        // { pathname: '/', params: params || {} }, // if your want to redirect to the home page
+        { pathname, params: params || {} }, // if your want to redirect to the current page
+        { locale: nextLocale }
       );
     });
   }
