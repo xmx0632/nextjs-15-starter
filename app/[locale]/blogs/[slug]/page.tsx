@@ -90,11 +90,7 @@ export async function generateStaticParams() {
   posts = posts.filter((post) => post.slug);
 
   return posts.map((post) => {
-    // Remove the leading '/blogs' from the slug and split the rest into an array
-    const slugArray = post.slug
-      ?.replace(/^\/blogs/, "")
-      .split("/")
-      .filter(Boolean);
+    const slugArray = post.slug.split("/").filter(Boolean);
 
     return {
       slug: slugArray,
