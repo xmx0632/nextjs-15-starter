@@ -1,5 +1,5 @@
 import MDXComponents from "@/components/mdx/MDXComponents";
-import { Locale } from "@/i18n/routing";
+import { Locale, LOCALES } from "@/i18n/routing";
 import { constructMetadata } from "@/lib/metadata";
 import fs from "fs/promises";
 import { Metadata } from "next";
@@ -68,4 +68,10 @@ export default async function AboutPage({ params }: { params: Params }) {
       />
     </article>
   );
+}
+
+export async function generateStaticParams() {
+  return LOCALES.map((locale) => ({
+    locale,
+  }));
 }
