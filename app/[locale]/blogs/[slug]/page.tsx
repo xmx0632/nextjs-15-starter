@@ -1,6 +1,6 @@
 import { Callout } from "@/components/mdx/Callout";
 import MDXComponents from "@/components/mdx/MDXComponents";
-import { Locale } from "@/i18n/routing";
+import { Locale, LOCALES } from "@/i18n/routing";
 import { getPosts } from "@/lib/getBlogs";
 import { constructMetadata } from "@/lib/metadata";
 import { BlogPost } from "@/types/blog";
@@ -89,11 +89,14 @@ export async function generateStaticParams() {
   // Filter out posts without a slug
   posts = posts.filter((post) => post.slug);
 
-  return posts.map((post) => {
-    const slugArray = post.slug.split("/").filter(Boolean);
+  return LOCALES.flatMap((locale) =>
+    posts.map((post) => {
+      const slugPart = post.slug.replace(/^\//, "").replace(/^blogs\//, "");
 
-    return {
-      slug: slugArray,
-    };
-  });
+      return {
+        locale,
+        slug: slugPart,
+      };
+    })
+  );
 }
