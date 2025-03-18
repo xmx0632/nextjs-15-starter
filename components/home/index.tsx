@@ -58,6 +58,6 @@ const WEBSITE_LOGO_DEMO = [
   { name: "J Blog", url: "https://weijunext.com/" },
   { name: "OG Image Generator", url: "https://ogimage.click/" },
   { name: "Next Idea", url: "https://nextidea.dev/" },
-  { name: "Next Idea NewTab", url: "https://newtab.nextidea.dev/" },
+  { name: "newTab", url: "https://ntab.dev/" },
   { name: "NextJS 中文文档", url: "https://nextjscn.org/" },
 ];

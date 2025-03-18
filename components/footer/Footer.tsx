@@ -187,8 +187,8 @@ const footerLinks: FooterLink[] = [
         target: "_blank",
       },
       {
-        href: "https://newtab.nextidea.dev/",
-        label: "Next Idea NewTab",
+        href: "https://ntab.dev/",
+        label: "nTab",
         rel: "noopener noreferrer",
         target: "_blank",
       },
