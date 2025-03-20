@@ -51,11 +51,11 @@ export async function subscribeToNewsletter(email: string) {
     }
 
     // Check if already subscribed
-    const list = await resend.contacts.list({ audienceId: AUDIENCE_ID });
-    const user = list.data?.data.find((item) => item.email === normalizedEmail);
-    if (user) {
-      return { success: true, alreadySubscribed: true };
-    }
+    // const list = await resend.contacts.list({ audienceId: AUDIENCE_ID });
+    // const user = list.data?.data.find((item) => item.email === normalizedEmail);
+    // if (user) {
+    //   return { success: true, alreadySubscribed: true };
+    // }
 
     // Add to audience
     await resend.contacts.create({
