@@ -1,5 +1,5 @@
 import { Locale } from '@/i18n/routing';
-import Cookies from 'js-cookie'; // 建议使用 js-cookie 库来简化 Cookie 操作
+import Cookies from 'js-cookie';
 import { create } from 'zustand';
 
 interface LocaleState {
