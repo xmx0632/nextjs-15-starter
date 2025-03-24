@@ -74,7 +74,6 @@ export default async function LocaleLayout({
             <Header />
             <main className="flex flex-col items-center py-6">{children}</main>
             <Footer />
-            <Analytics />
             <TailwindIndicator />
           </ThemeProvider>
         </NextIntlClientProvider>
@@ -82,6 +81,7 @@ export default async function LocaleLayout({
           <></>
         ) : (
           <>
+            <Analytics />
             <BaiDuAnalytics />
             <GoogleAnalytics />
             <GoogleAdsense />
