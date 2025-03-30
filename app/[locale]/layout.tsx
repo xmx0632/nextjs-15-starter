@@ -1,6 +1,7 @@
 import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 import GoogleAdsense from "@/app/GoogleAdsense";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
+import PlausibleAnalytics from "@/app/PlausibleAnalytics";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { LanguageDetectionAlert } from "@/components/LanguageDetectionAlert";
@@ -85,6 +86,7 @@ export default async function LocaleLayout({
             <BaiDuAnalytics />
             <GoogleAnalytics />
             <GoogleAdsense />
+            <PlausibleAnalytics />
           </>
         )}
       </body>
