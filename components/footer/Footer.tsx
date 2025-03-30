@@ -188,8 +188,8 @@ const footerLinks: FooterLink[] = [
     title: "Other Products",
     links: [
       {
-        href: "https://nextidea.dev/",
-        label: "Next Idea",
+        href: "https://wenext.dev/",
+        label: "WeNext",
         rel: "noopener noreferrer",
         target: "_blank",
       },
@@ -206,14 +206,8 @@ const footerLinks: FooterLink[] = [
         target: "_blank",
       },
       {
-        href: "https://nextjscn.org/",
-        label: "Next.js 中文文档",
-        rel: "noopener noreferrer",
-        target: "_blank",
-      },
-      {
-        href: "https://weijunext.com/",
-        label: "J实验室",
+        href: "https://nextidea.dev/",
+        label: "Next Idea",
         rel: "noopener noreferrer",
         target: "_blank",
       },
