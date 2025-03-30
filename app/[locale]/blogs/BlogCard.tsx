@@ -7,6 +7,7 @@ export function BlogCard({ post, locale }: { post: BlogPost; locale: string }) {
   return (
     <I18nLink
       href={`/blogs/${post.slug}`}
+      prefetch={false}
       className="bg-transparent rounded-lg hover:underline"
     >
       <div className="relative rounded shadow-md  pt-[56.25%]">

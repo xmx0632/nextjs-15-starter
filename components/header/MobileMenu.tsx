@@ -29,6 +29,7 @@ export default function MobileMenu() {
           <DropdownMenuLabel>
             <I18nLink
               href="/"
+              prefetch={false}
               className="flex items-center space-x-1 font-bold"
             >
               <Image
@@ -47,7 +48,11 @@ export default function MobileMenu() {
           <DropdownMenuGroup>
             {headerLinks.map((link) => (
               <DropdownMenuItem key={link.name}>
-                <I18nLink href={link.href} title={tHeader(link.name)}>
+                <I18nLink
+                  href={link.href}
+                  title={tHeader(link.name)}
+                  prefetch={false}
+                >
                   {tHeader(link.name)}
                 </I18nLink>
               </DropdownMenuItem>

@@ -94,6 +94,7 @@ export default function Footer() {
                         <I18nLink
                           href={link.href}
                           title={link.label}
+                          prefetch={false}
                           className="hover:text-white transition-colors"
                           target={link.target || ""}
                           rel={link.rel || ""}
@@ -123,6 +124,7 @@ export default function Footer() {
         <I18nLink
           href="/about"
           title="About"
+          prefetch={false}
           className=" hover:text-white transition-colors"
         >
           &copy; {new Date().getFullYear()} Next Forge. All rights reserved.

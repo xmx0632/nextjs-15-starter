@@ -17,6 +17,7 @@ const Header = () => {
           <div className="flex items-center md:gap-x-12 flex-1">
             <I18nLink
               href="/"
+              prefetch={false}
               className="flex items-center space-x-1 font-bold"
             >
               <Image
