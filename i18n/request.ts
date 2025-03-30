@@ -5,9 +5,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
   // This typically corresponds to the `[locale]` segment
   let locale = await requestLocale;
 
-  if (locale?.includes('zh')) {
+  if (locale?.startsWith('zh')) {
     locale = 'zh';
-  } else if (locale?.includes('ja')) {
+  } else if (locale?.startsWith('ja')) {
     locale = 'ja';
   } else {
     locale = 'en';

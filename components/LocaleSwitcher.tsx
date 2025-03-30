@@ -18,16 +18,16 @@ import { useLocaleStore } from "@/stores/localeStore";
 import { Globe } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useParams } from "next/navigation";
-import { useEffect, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 export default function LocaleSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
   const locale = useLocale();
-  const { currentLocale, setCurrentLocale, dismissLanguageAlert } =
-    useLocaleStore();
+  const { dismissLanguageAlert } = useLocaleStore();
   const [, startTransition] = useTransition();
+  const [currentLocale, setCurrentLocale] = useState("locale");
 
   useEffect(() => {
     setCurrentLocale(locale);
