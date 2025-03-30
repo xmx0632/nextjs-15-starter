@@ -3,7 +3,15 @@ import { routing } from './routing';
 
 export default getRequestConfig(async ({ requestLocale }) => {
   // This typically corresponds to the `[locale]` segment
-  const locale = await requestLocale;
+  let locale = await requestLocale;
+
+  if (locale?.includes('zh')) {
+    locale = 'zh';
+  } else if (locale?.includes('ja')) {
+    locale = 'ja';
+  } else {
+    locale = 'en';
+  }
 
   // Ensure that a valid locale is used
   if (!locale || !routing.locales.includes(locale as any)) {
