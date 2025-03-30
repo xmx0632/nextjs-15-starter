@@ -11,11 +11,10 @@ import { useEffect, useState } from "react";
 
 export function LanguageDetectionAlert() {
   const [countdown, setCountdown] = useState(10); // countdown 10s and dismiss
-  const currentLocale = useLocale();
+  const locale = useLocale();
+  const [currentLocale, setCurrentLocale] = useState(locale);
   const {
-    browserLang,
     showLanguageAlert,
-    setBrowserLang,
     setShowLanguageAlert,
     dismissLanguageAlert,
     getLangAlertDismissed,
@@ -36,15 +35,10 @@ export function LanguageDetectionAlert() {
       }
 
       // If language still isn't supported, default to English
-      setBrowserLang(supportedLang || DEFAULT_LOCALE);
-      setShowLanguageAlert(supportedLang !== currentLocale);
+      setCurrentLocale(supportedLang || DEFAULT_LOCALE);
+      setShowLanguageAlert(supportedLang !== locale);
     }
-  }, [
-    currentLocale,
-    getLangAlertDismissed,
-    setBrowserLang,
-    setShowLanguageAlert,
-  ]);
+  }, [locale, getLangAlertDismissed, setCurrentLocale, setShowLanguageAlert]);
 
   // countdown
   useEffect(() => {
@@ -70,7 +64,7 @@ export function LanguageDetectionAlert() {
 
   if (!showLanguageAlert) return null;
 
-  const messages = require(`@/i18n/messages/${browserLang}.json`);
+  const messages = require(`@/i18n/messages/${currentLocale}.json`);
   const alertMessages = messages.LanguageDetection;
 
   return (
