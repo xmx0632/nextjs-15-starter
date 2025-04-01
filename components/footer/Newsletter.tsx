@@ -13,7 +13,7 @@ export function Newsletter() {
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const t = useTranslations("Newsletter");
+  const t = useTranslations("Footer.Newsletter");
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();

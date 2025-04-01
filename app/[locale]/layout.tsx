@@ -71,10 +71,13 @@ export default async function LocaleLayout({
             defaultTheme={siteConfig.defaultNextTheme}
             enableSystem
           >
-            <LanguageDetectionAlert />
-            <Header />
+            {messages.LanguageDetection && <LanguageDetectionAlert />}
+            {messages.Header && <Header />}
+
             <main className="flex flex-col items-center py-6">{children}</main>
-            <Footer />
+
+            {messages.Footer && <Footer />}
+
             <TailwindIndicator />
           </ThemeProvider>
         </NextIntlClientProvider>

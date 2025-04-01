@@ -8,6 +8,7 @@ import { SiBluesky } from "react-icons/si";
 
 export default function Footer() {
   const t = useTranslations("Home");
+  const tFooter = useTranslations("Footer");
   return (
     <div className="bg-gray-800 dark:bg-primary-foreground text-gray-300">
       <footer className="py-2 border-t border-gray-700">
@@ -127,7 +128,7 @@ export default function Footer() {
           prefetch={false}
           className=" hover:text-white transition-colors"
         >
-          &copy; {new Date().getFullYear()} Next Forge. All rights reserved.
+          {tFooter("Copyright", { year: new Date().getFullYear() })}
         </I18nLink>
       </div>
     </div>
