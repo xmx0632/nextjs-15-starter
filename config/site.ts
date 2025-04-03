@@ -1,6 +1,6 @@
 import { SiteConfig } from "@/types/siteConfig";
 
-export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://nextforge.dev";
+export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://nextforge.dev";
 
 export const SOURCE_CODE_URL = "https://github.com/weijunext/nextjs-15-starter";
 
