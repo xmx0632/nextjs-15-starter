@@ -39,7 +39,7 @@ export async function constructMetadata({
   // build image URLs
   const imageUrls = images.length > 0
     ? images.map(img => ({
-      url: img.startsWith('http') ? img : `${siteConfig.url}${img}`,
+      url: img.startsWith('http') ? img : `${siteConfig.url}/${img}`,
       alt: pageTitle,
     }))
     : [{
@@ -55,7 +55,7 @@ export async function constructMetadata({
     const path = canonicalUrl
       ? `/${lang === DEFAULT_LOCALE ? '' : lang}${canonicalUrl}`
       : `/${lang === DEFAULT_LOCALE ? '' : lang}`
-    acc[lang] = `${siteConfig.url}${path}`
+    acc[lang] = `${siteConfig.url}/${path}`
     return acc
   }, {} as Record<string, string>)
 
@@ -67,7 +67,7 @@ export async function constructMetadata({
     creator: siteConfig.creator,
     metadataBase: new URL(siteConfig.url),
     alternates: {
-      canonical: canonicalUrl ? `${siteConfig.url}${canonicalUrl}` : undefined,
+      canonical: canonicalUrl ? `${siteConfig.url}/${canonicalUrl}` : undefined,
       languages: alternateLanguages,
     },
     openGraph: {
@@ -83,7 +83,7 @@ export async function constructMetadata({
       card: 'summary_large_image',
       title: finalTitle,
       description: pageDescription,
-      site: `${siteConfig.url}${pageURL}`,
+      site: `${siteConfig.url}/${pageURL}`,
       images: imageUrls,
       creator: siteConfig.creator,
     },
