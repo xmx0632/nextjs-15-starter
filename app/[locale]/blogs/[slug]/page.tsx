@@ -5,7 +5,7 @@ import { getPosts } from "@/lib/getBlogs";
 import { constructMetadata } from "@/lib/metadata";
 import { BlogPost } from "@/types/blog";
 import { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote-client/rsc";
 import { notFound } from "next/navigation";
 
 type Params = Promise<{

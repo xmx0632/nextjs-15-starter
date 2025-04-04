@@ -4,7 +4,7 @@ import { constructMetadata } from "@/lib/metadata";
 import fs from "fs/promises";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote-client/rsc";
 import path from "path";
 import remarkGfm from "remark-gfm";
 

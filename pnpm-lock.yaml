@@ -28,7 +28,7 @@ dependencies:
     version: 1.34.5
   '@vercel/analytics':
     specifier: ^1.4.1
-    version: 1.5.0(next@15.1.7)(react@19.0.0)
+    version: 1.5.0(next@15.2.4)(react@19.0.0)
   axios:
     specifier: ^1.7.9
     version: 1.8.3
@@ -51,14 +51,14 @@ dependencies:
     specifier: ^0.468.0
     version: 0.468.0(react@19.0.0)
   next:
-    specifier: 15.1.7
-    version: 15.1.7(react-dom@19.0.0)(react@19.0.0)
+    specifier: 15.2.4
+    version: 15.2.4(react-dom@19.0.0)(react@19.0.0)
   next-intl:
     specifier: ^4.0.2
-    version: 4.0.2(next@15.1.7)(react@19.0.0)(typescript@5.8.2)
-  next-mdx-remote:
-    specifier: ^5.0.0
-    version: 5.0.0(@types/react@19.0.11)(acorn@8.14.1)(react@19.0.0)
+    version: 4.0.2(next@15.2.4)(react@19.0.0)(typescript@5.8.2)
+  next-mdx-remote-client:
+    specifier: '2'
+    version: 2.1.1(@types/react@19.0.11)(acorn@8.14.1)(react-dom@19.0.0)(react@19.0.0)
   next-themes:
     specifier: ^0.4.4
     version: 0.4.6(react-dom@19.0.0)(react@19.0.0)
@@ -637,8 +637,8 @@ packages:
     dev: true
     optional: true
 
-  /@next/env@15.1.7:
-    resolution: {integrity: sha512-d9jnRrkuOH7Mhi+LHav2XW91HOgTAWHxjMPkXMGBc9B2b7614P7kjt8tAplRvJpbSt4nbO1lugcT/kAaWzjlLQ==}
+  /@next/env@15.2.4:
+    resolution: {integrity: sha512-+SFtMgoiYP3WoSswuNmxJOCwi06TdWE733D+WPjpXIe4LXGULwEaofiiAy6kbS0+XjM5xF5n3lKuBwN2SnqD9g==}
     dev: false
 
   /@next/eslint-plugin-next@15.0.4:
@@ -647,8 +647,8 @@ packages:
       fast-glob: 3.3.1
     dev: true
 
-  /@next/swc-darwin-arm64@15.1.7:
-    resolution: {integrity: sha512-hPFwzPJDpA8FGj7IKV3Yf1web3oz2YsR8du4amKw8d+jAOHfYHYFpMkoF6vgSY4W6vB29RtZEklK9ayinGiCmQ==}
+  /@next/swc-darwin-arm64@15.2.4:
+    resolution: {integrity: sha512-1AnMfs655ipJEDC/FHkSr0r3lXBgpqKo4K1kiwfUf3iE68rDFXZ1TtHdMvf7D0hMItgDZ7Vuq3JgNMbt/+3bYw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -656,8 +656,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-darwin-x64@15.1.7:
-    resolution: {integrity: sha512-2qoas+fO3OQKkU0PBUfwTiw/EYpN+kdAx62cePRyY1LqKtP09Vp5UcUntfZYajop5fDFTjSxCHfZVRxzi+9FYQ==}
+  /@next/swc-darwin-x64@15.2.4:
+    resolution: {integrity: sha512-3qK2zb5EwCwxnO2HeO+TRqCubeI/NgCe+kL5dTJlPldV/uwCnUgC7VbEzgmxbfrkbjehL4H9BPztWOEtsoMwew==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -665,8 +665,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-gnu@15.1.7:
-    resolution: {integrity: sha512-sKLLwDX709mPdzxMnRIXLIT9zaX2w0GUlkLYQnKGoXeWUhcvpCrK+yevcwCJPdTdxZEUA0mOXGLdPsGkudGdnA==}
+  /@next/swc-linux-arm64-gnu@15.2.4:
+    resolution: {integrity: sha512-HFN6GKUcrTWvem8AZN7tT95zPb0GUGv9v0d0iyuTb303vbXkkbHDp/DxufB04jNVD+IN9yHy7y/6Mqq0h0YVaQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -675,8 +675,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-arm64-musl@15.1.7:
-    resolution: {integrity: sha512-zblK1OQbQWdC8fxdX4fpsHDw+VSpBPGEUX4PhSE9hkaWPrWoeIJn+baX53vbsbDRaDKd7bBNcXRovY1hEhFd7w==}
+  /@next/swc-linux-arm64-musl@15.2.4:
+    resolution: {integrity: sha512-Oioa0SORWLwi35/kVB8aCk5Uq+5/ZIumMK1kJV+jSdazFm2NzPDztsefzdmzzpx5oGCJ6FkUC7vkaUseNTStNA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -685,8 +685,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-gnu@15.1.7:
-    resolution: {integrity: sha512-GOzXutxuLvLHFDAPsMP2zDBMl1vfUHHpdNpFGhxu90jEzH6nNIgmtw/s1MDwpTOiM+MT5V8+I1hmVFeAUhkbgQ==}
+  /@next/swc-linux-x64-gnu@15.2.4:
+    resolution: {integrity: sha512-yb5WTRaHdkgOqFOZiu6rHV1fAEK0flVpaIN2HB6kxHVSy/dIajWbThS7qON3W9/SNOH2JWkVCyulgGYekMePuw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -695,8 +695,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-linux-x64-musl@15.1.7:
-    resolution: {integrity: sha512-WrZ7jBhR7ATW1z5iEQ0ZJfE2twCNSXbpCSaAunF3BKcVeHFADSI/AW1y5Xt3DzTqPF1FzQlwQTewqetAABhZRQ==}
+  /@next/swc-linux-x64-musl@15.2.4:
+    resolution: {integrity: sha512-Dcdv/ix6srhkM25fgXiyOieFUkz+fOYkHlydWCtB0xMST6X9XYI3yPDKBZt1xuhOytONsIFJFB08xXYsxUwJLw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -705,8 +705,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-arm64-msvc@15.1.7:
-    resolution: {integrity: sha512-LDnj1f3OVbou1BqvvXVqouJZKcwq++mV2F+oFHptToZtScIEnhNRJAhJzqAtTE2dB31qDYL45xJwrc+bLeKM2Q==}
+  /@next/swc-win32-arm64-msvc@15.2.4:
+    resolution: {integrity: sha512-dW0i7eukvDxtIhCYkMrZNQfNicPDExt2jPb9AZPpL7cfyUo7QSNl1DjsHjmmKp6qNAqUESyT8YFl/Aw91cNJJg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -714,8 +714,8 @@ packages:
     dev: false
     optional: true
 
-  /@next/swc-win32-x64-msvc@15.1.7:
-    resolution: {integrity: sha512-dC01f1quuf97viOfW05/K8XYv2iuBgAxJZl7mbCKEjMgdQl5JjAKJ0D2qMKZCgPWDeFbFT0Q0nYWwytEW0DWTQ==}
+  /@next/swc-win32-x64-msvc@15.2.4:
+    resolution: {integrity: sha512-SbnWkJmkS7Xl3kre8SdMF6F/XDh1DTFEhp0jRTj/uB8iPKoU2bb2NDfcu+iifv1+mxQEd1g2vvSxcZbXSKyWiQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -1675,7 +1675,7 @@ packages:
       crypto-js: 4.2.0
     dev: false
 
-  /@vercel/analytics@1.5.0(next@15.1.7)(react@19.0.0):
+  /@vercel/analytics@1.5.0(next@15.2.4)(react@19.0.0):
     resolution: {integrity: sha512-MYsBzfPki4gthY5HnYN7jgInhAZ7Ac1cYDoRWFomwGHWEX7odTEzbtg9kf/QSo7XEsEAqlQugA6gJ2WS2DEa3g==}
     peerDependencies:
       '@remix-run/react': ^2
@@ -1701,7 +1701,7 @@ packages:
       vue-router:
         optional: true
     dependencies:
-      next: 15.1.7(react-dom@19.0.0)(react@19.0.0)
+      next: 15.2.4(react-dom@19.0.0)(react@19.0.0)
       react: 19.0.0
     dev: false
 
@@ -4351,7 +4351,7 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /next-intl@4.0.2(next@15.1.7)(react@19.0.0)(typescript@5.8.2):
+  /next-intl@4.0.2(next@15.2.4)(react@19.0.0)(typescript@5.8.2):
     resolution: {integrity: sha512-3cKVflwdrqxCOvAL+DtGN68qR802i0PEj0dttkAD5IK5XxOjugQs4yU8aSakvPMbkOrhEJ+89z5lG2EAqi7Gkw==}
     peerDependencies:
       next: ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
@@ -4363,23 +4363,26 @@ packages:
     dependencies:
       '@formatjs/intl-localematcher': 0.5.10
       negotiator: 1.0.0
-      next: 15.1.7(react-dom@19.0.0)(react@19.0.0)
+      next: 15.2.4(react-dom@19.0.0)(react@19.0.0)
       react: 19.0.0
       typescript: 5.8.2
       use-intl: 4.0.2(react@19.0.0)
     dev: false
 
-  /next-mdx-remote@5.0.0(@types/react@19.0.11)(acorn@8.14.1)(react@19.0.0):
-    resolution: {integrity: sha512-RNNbqRpK9/dcIFZs/esQhuLA8jANqlH694yqoDBK8hkVdJUndzzGmnPHa2nyi90N4Z9VmzuSWNRpr5ItT3M7xQ==}
-    engines: {node: '>=14', npm: '>=7'}
+  /next-mdx-remote-client@2.1.1(@types/react@19.0.11)(acorn@8.14.1)(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-FDScfbKe5gNlCw6wdkyZi9Eb3L5MM0laTxB9XeWEoaInOLCagyYIccPQaSnoLZPPhgDRJx5IxusyBPdBCam3QQ==}
+    engines: {node: '>=18.18.0'}
     peerDependencies:
-      react: '>=16'
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
     dependencies:
       '@babel/code-frame': 7.26.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       '@mdx-js/react': 3.1.0(@types/react@19.0.11)(react@19.0.0)
       react: 19.0.0
-      unist-util-remove: 3.1.1
+      react-dom: 19.0.0(react@19.0.0)
+      remark-mdx-remove-esm: 1.1.0
+      serialize-error: 12.0.0
       vfile: 6.0.3
       vfile-matter: 5.0.0
     transitivePeerDependencies:
@@ -4398,8 +4401,8 @@ packages:
       react-dom: 19.0.0(react@19.0.0)
     dev: false
 
-  /next@15.1.7(react-dom@19.0.0)(react@19.0.0):
-    resolution: {integrity: sha512-GNeINPGS9c6OZKCvKypbL8GTsT5GhWPp4DM0fzkXJuXMilOO2EeFxuAY6JZbtk6XIl6Ws10ag3xRINDjSO5+wg==}
+  /next@15.2.4(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -4419,7 +4422,7 @@ packages:
       sass:
         optional: true
     dependencies:
-      '@next/env': 15.1.7
+      '@next/env': 15.2.4
       '@swc/counter': 0.1.3
       '@swc/helpers': 0.5.15
       busboy: 1.6.0
@@ -4429,14 +4432,14 @@ packages:
       react-dom: 19.0.0(react@19.0.0)
       styled-jsx: 5.1.6(react@19.0.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.1.7
-      '@next/swc-darwin-x64': 15.1.7
-      '@next/swc-linux-arm64-gnu': 15.1.7
-      '@next/swc-linux-arm64-musl': 15.1.7
-      '@next/swc-linux-x64-gnu': 15.1.7
-      '@next/swc-linux-x64-musl': 15.1.7
-      '@next/swc-win32-arm64-msvc': 15.1.7
-      '@next/swc-win32-x64-msvc': 15.1.7
+      '@next/swc-darwin-arm64': 15.2.4
+      '@next/swc-darwin-x64': 15.2.4
+      '@next/swc-linux-arm64-gnu': 15.2.4
+      '@next/swc-linux-arm64-musl': 15.2.4
+      '@next/swc-linux-x64-gnu': 15.2.4
+      '@next/swc-linux-x64-musl': 15.2.4
+      '@next/swc-win32-arm64-msvc': 15.2.4
+      '@next/swc-win32-x64-msvc': 15.2.4
       sharp: 0.33.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -4959,6 +4962,16 @@ packages:
       - supports-color
     dev: false
 
+  /remark-mdx-remove-esm@1.1.0:
+    resolution: {integrity: sha512-oN3F9QRuPKSdzZi+wvEodBVjKwya63sl403pWzJvm0+c503iUjCDR+JAnP3Ho/4205IWbQ2NujPQi/B9kU6ZrA==}
+    dependencies:
+      '@types/mdast': 4.0.4
+      mdast-util-mdxjs-esm: 2.0.1
+      unist-util-remove: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /remark-mdx@3.1.0:
     resolution: {integrity: sha512-Ngl/H3YXyBV9RcRNdlYsZujAmhsxwzxpDzpDEhFBVAGthS4GDgnctpDjgFl/ULx5UEDzqtW1cyBSNKqYYrqLBA==}
     dependencies:
@@ -5123,6 +5136,13 @@ packages:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
     hasBin: true
+
+  /serialize-error@12.0.0:
+    resolution: {integrity: sha512-ZYkZLAvKTKQXWuh5XpBw7CdbSzagarX39WyZ2H07CDLC5/KfsRGlIXV8d4+tfqX1M7916mRqR1QfNHSij+c9Pw==}
+    engines: {node: '>=18'}
+    dependencies:
+      type-fest: 4.39.1
+    dev: false
 
   /set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -5568,6 +5588,11 @@ packages:
       prelude-ls: 1.2.1
     dev: true
 
+  /type-fest@4.39.1:
+    resolution: {integrity: sha512-uW9qzd66uyHYxwyVBYiwS4Oi0qZyUqwjU+Oevr6ZogYiXt99EOYtwvzMSLw1c3lYo2HzJsep/NB23iEVEgjG/w==}
+    engines: {node: '>=16'}
+    dev: false
+
   /typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
     engines: {node: '>= 0.4'}
@@ -5644,12 +5669,6 @@ packages:
       vfile: 6.0.3
     dev: false
 
-  /unist-util-is@5.2.1:
-    resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
-    dependencies:
-      '@types/unist': 2.0.11
-    dev: false
-
   /unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
     dependencies:
@@ -5668,25 +5687,18 @@ packages:
       '@types/unist': 3.0.3
     dev: false
 
-  /unist-util-remove@3.1.1:
-    resolution: {integrity: sha512-kfCqZK5YVY5yEa89tvpl7KnBBHu2c6CzMkqHUrlOqaRgGOMp0sMvwWOVrbAtj03KhovQB7i96Gda72v/EFE0vw==}
+  /unist-util-remove@4.0.0:
+    resolution: {integrity: sha512-b4gokeGId57UVRX/eVKej5gXqGlc9+trkORhFJpu9raqZkZhU0zm8Doi05+HaiBsMEIJowL+2WtQ5ItjsngPXg==}
     dependencies:
-      '@types/unist': 2.0.11
-      unist-util-is: 5.2.1
-      unist-util-visit-parents: 5.1.3
+      '@types/unist': 3.0.3
+      unist-util-is: 6.0.0
+      unist-util-visit-parents: 6.0.1
     dev: false
 
   /unist-util-stringify-position@4.0.0:
     resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
     dependencies:
       '@types/unist': 3.0.3
-    dev: false
-
-  /unist-util-visit-parents@5.1.3:
-    resolution: {integrity: sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==}
-    dependencies:
-      '@types/unist': 2.0.11
-      unist-util-is: 5.2.1
     dev: false
 
   /unist-util-visit-parents@6.0.1:
