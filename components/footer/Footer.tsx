@@ -91,7 +91,7 @@ export default function Footer() {
                 <ul className="space-y-2 text-sm">
                   {section.links.map((link) => (
                     <li key={link.href}>
-                      {link.href.startsWith("/") ? (
+                      {link.href.startsWith("/") && !link.useA ? (
                         <I18nLink
                           href={link.href}
                           title={link.label}
@@ -145,15 +145,16 @@ type Link = {
   label: string;
   target?: string;
   rel?: string;
+  useA?: boolean;
 };
 
 const footerLinks: FooterLink[] = [
   {
     title: "Languages",
     links: [
-      { href: "/", label: "English" },
-      { href: "/zh", label: "中文" },
-      { href: "/ja", label: "日本語" },
+      { href: "/en", label: "English", useA: true },
+      { href: "/zh", label: "中文", useA: true },
+      { href: "/ja", label: "日本語", useA: true },
     ],
   },
   {
