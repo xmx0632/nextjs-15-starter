@@ -64,7 +64,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale || DEFAULT_LOCALE} suppressHydrationWarning>
       <head />
-      <body className={cn("min-h-screen bg-background font-sans antialiased")}>
+      <body
+        className={cn(
+          "min-h-screen bg-background flex flex-col font-sans antialiased"
+        )}
+      >
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -74,7 +78,9 @@ export default async function LocaleLayout({
             {messages.LanguageDetection && <LanguageDetectionAlert />}
             {messages.Header && <Header />}
 
-            <main className="flex flex-col items-center py-6">{children}</main>
+            <main className="flex-1 flex flex-col items-center">
+              {children}
+            </main>
 
             {messages.Footer && <Footer />}
 
