@@ -20,7 +20,8 @@ export default function MobileMenu() {
   const t = useTranslations("Home");
   const tHeader = useTranslations("Header");
   return (
-    <div className="md:hidden">
+    <div className="flex items-center md:hidden">
+      <LocaleSwitcher />
       <DropdownMenu>
         <DropdownMenuTrigger className="p-2">
           <Menu className="h-5 w-5" />
@@ -62,7 +63,6 @@ export default function MobileMenu() {
           <DropdownMenuGroup>
             <DropdownMenuItem className="p-2 focus:bg-transparent justify-end">
               <div className="flex items-center gap-x-4">
-                <LocaleSwitcher />
                 <ThemeToggle />
               </div>
             </DropdownMenuItem>
