@@ -7,7 +7,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: process.env.R2_PUBLIC_URL?.replace("https://", "") || "",
+        // if you use r2, you should configure the hostname to your r2 public url
+        hostname: "",
       },
     ],
   },
