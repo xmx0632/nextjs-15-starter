@@ -83,10 +83,9 @@ export default async function LocaleLayout({
             </main>
 
             {messages.Footer && <Footer />}
-
-            <TailwindIndicator />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <TailwindIndicator />
         {process.env.NODE_ENV === "development" ? (
           <></>
         ) : (
