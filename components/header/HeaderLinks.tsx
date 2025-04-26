@@ -1,4 +1,4 @@
-import { SOURCE_CODE_URL } from "@/config/site";
+import { PRO_VERSION, SOURCE_CODE_URL } from "@/config/site";
 import { Link as I18nLink } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 
@@ -16,6 +16,12 @@ export const headerLinks = [
     href: SOURCE_CODE_URL,
     target: "_blank",
     rel: "noopener noreferrer nofollow",
+  },
+  {
+    name: "proVersion",
+    href: PRO_VERSION,
+    target: "_blank",
+    rel: "noopener noreferrer",
   },
 ];
 

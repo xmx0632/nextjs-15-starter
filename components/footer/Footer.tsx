@@ -173,12 +173,6 @@ const footerLinks: FooterLink[] = [
         target: "_blank",
       },
       {
-        href: "https://github.com/weijunext/smart-excel-ai",
-        label: "SaaS Template",
-        rel: "noopener noreferrer nofollow",
-        target: "_blank",
-      },
-      {
         href: "https://github.com/weijunext/weekly-boilerplate",
         label: "Blog Boilerplate",
         rel: "noopener noreferrer nofollow",
@@ -190,8 +184,8 @@ const footerLinks: FooterLink[] = [
     title: "Other Products",
     links: [
       {
-        href: "https://wenext.dev/",
-        label: "WeNext",
+        href: "https://nexty.dev/",
+        label: "Nexty - SaaS Template",
         rel: "noopener noreferrer",
         target: "_blank",
       },
@@ -204,12 +198,6 @@ const footerLinks: FooterLink[] = [
       {
         href: "https://ogimage.click/",
         label: "OG Image Generator",
-        rel: "noopener noreferrer",
-        target: "_blank",
-      },
-      {
-        href: "https://nextidea.dev/",
-        label: "Next Idea",
         rel: "noopener noreferrer",
         target: "_blank",
       },

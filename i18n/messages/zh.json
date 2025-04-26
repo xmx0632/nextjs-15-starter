@@ -7,7 +7,8 @@
   "Header": {
     "blogs": "博客",
     "about": "关于",
-    "sourceCode": "源码"
+    "sourceCode": "源码",
+    "proVersion": "专业版"
   },
   "Footer": {
     "Copyright": "版权所有 © {year} Next Forge。保留所有权利。",
