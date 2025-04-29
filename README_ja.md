@@ -5,6 +5,8 @@
 - [👉 ソースコード](https://github.com/weijunext/nextjs-15-starter)
 - [👉 デモサイト](https://nextforge.dev/)
 
+🚀 多機能で使いやすいフルスタックの起動テンプレートをお探しですか？ ぜひ、当社の[アドバンス版](https://nexty.dev)をお試しください。
+
 ## ✨ 主な機能
 
 - 🌐 多言語対応（英語・中国語・日本語）

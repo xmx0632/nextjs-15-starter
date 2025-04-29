@@ -2,10 +2,12 @@
 
 # Next Forge - 多语言 Next.js 15 启动模板
 
-一个功能完备的 Next.js 15 多语言启动模板，帮助你快速构建面向全球的网站。
+一个轻量的 Next.js 15 多语言启动模板，帮助你快速构建面向全球的网站。
 
 - [👉 源码地址](https://github.com/weijunext/nextjs-15-starter)
 - [👉 在线预览](https://nextforge.dev/)
+
+🚀 如果你正在寻找功能完备的全栈启动模板，请了解我们的[高级版](https://nexty.dev)
 
 ## ✨ 特性
 

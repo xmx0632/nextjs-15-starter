@@ -7,6 +7,8 @@ A feature-rich Next.js 15 multilingual starter template to help you quickly buil
 - [👉 Source Code](https://github.com/weijunext/nextjs-15-starter)
 - [👉 Live Demo](https://nextforge.dev/)
 
+🚀 Looking for a full-featured SaaS Starter Kit? [Check out the complete version](https://nexty.dev)
+
 ## ✨ Features
 
 - 🌐 Built-in i18n support (English, Chinese, Japanese)
