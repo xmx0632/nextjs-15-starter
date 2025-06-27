@@ -25,28 +25,43 @@ A feature-rich Next.js 15 multilingual starter template to help you quickly buil
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+- Node.js 18.17 or higher
+- pnpm 9.0 or higher (recommended)
+
+> **Note**: The project has configured `packageManager` field, we recommend using pnpm for the best experience.
+
+### Installation
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/weijunext/nextjs-15-starter.git
+cd nextjs-15-starter
 ```
 
-2. Install dependencies:
+2. Enable Corepack (recommended):
 ```bash
-npm install
-# or
-yarn
-# or
-pnpm install
+corepack enable
 ```
 
-3. Copy environment variables:
+3. Install dependencies:
+```bash
+pnpm install
+# or use other package managers
+npm install
+yarn
+```
+
+4. Copy environment variables:
 ```bash
 cp .env.example .env
 ```
 
-4. Start the development server:
+5. Start the development server:
 ```bash
-npm run dev
+pnpm dev
+# or npm run dev
 ```
 
 Visit http://localhost:3000 to view your application.
@@ -110,20 +125,139 @@ NEXT_PUBLIC_BAIDU_TONGJI=
 NEXT_PUBLIC_GOOGLE_ADSENSE=
 ```
 
+## 📁 Project Structure
+
+```
+nextjs-15-starter/
+├── app/                      # App directory
+│   ├── [locale]/            # Internationalized routes
+│   │   ├── about/           # About page
+│   │   ├── blogs/           # Blog pages
+│   │   └── ...              # Other pages
+│   ├── api/                 # API routes
+│   └── globals/             # Global components
+├── blogs/                   # Blog content (MDX)
+│   ├── en/                  # English blogs
+│   ├── ja/                  # Japanese blogs
+│   └── zh/                  # Chinese blogs
+├── components/              # Reusable components
+│   ├── ui/                  # Base UI components
+│   ├── header/              # Header components
+│   ├── footer/              # Footer components
+│   └── ...                  # Other components
+├── config/                  # Configuration files
+├── content/                 # Static content (MDX)
+├── i18n/                    # Internationalization
+│   ├── messages/            # Translation files
+│   ├── routing.ts           # Routing configuration
+│   └── request.ts           # Request configuration
+├── lib/                     # Utility functions
+├── public/                  # Static assets
+└── types/                   # Type definitions
+```
+
 ## 🛠️ Tech Stack
 
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
-- next-intl
-- MDX
-- Zustand
-- Vercel
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS + Shadcn/ui
+- **Internationalization**: next-intl
+- **Content**: MDX
+- **State Management**: Zustand
+- **Deployment**: Vercel
+- **Package Manager**: pnpm (recommended)
 
-## One-Click Deploy
+## 🚀 Deployment
+
+### One-Click Deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/nextjs-15-starter&project-name=&repository-name=nextjs-15-starter&demo-title=Nextjs15Starter&demo-description=Nextjs%2015%20starter.&demo-url=https://nextforge.dev&demo-image=https://nextforge.dev/og.png)
+
+### Manual Deployment to Vercel
+
+1. Push your code to GitHub
+2. Import project in Vercel
+3. Configure environment variables
+4. Deploy
+
+### Other Platforms
+
+```bash
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+```
+
+## 💡 Development Best Practices
+
+### Package Manager
+
+- Project configured with `packageManager: "pnpm@10.12.4"`
+- Enable Corepack: `corepack enable`
+- Team members should use the same pnpm version
+
+### Code Quality
+
+```bash
+# Lint code
+pnpm lint
+
+# Type checking
+pnpm type-check
+```
+
+### Internationalization Development
+
+1. Adding new language support:
+   - Add new language files in `i18n/messages/`
+   - Update `i18n/routing.ts` configuration
+   - Create corresponding language directories in `blogs/` and `content/`
+
+2. Using translations:
+```tsx
+import { useTranslations } from 'next-intl';
+
+export default function MyComponent() {
+  const t = useTranslations('namespace');
+  return <h1>{t('title')}</h1>;
+}
+```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**1. Package manager version mismatch**
+```bash
+# Remove node_modules and lockfile
+rm -rf node_modules pnpm-lock.yaml
+# Reinstall
+pnpm install
+```
+
+**2. MDX files not displaying**
+- Check file path is correct
+- Verify frontmatter format
+- Ensure `visible` field is set to `published`
+
+**3. Internationalization routing issues**
+- Use `Link` component from `i18n/routing.ts`
+- Check `middleware.ts` configuration
+
+**4. Styles not working**
+- Verify Tailwind CSS class names are correct
+- Try restarting development server
+
+### Environment Variables
+
+Ensure `.env` file contains necessary configuration:
+```bash
+# Copy example config
+cp .env.example .env
+# Modify as needed
+```
 
 ## 📄 License
 

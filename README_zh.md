@@ -25,28 +25,43 @@
 
 ## 🚀 快速开始
 
+### 环境要求
+
+- Node.js 18.17 或更高版本
+- pnpm 9.0 或更高版本（推荐）
+
+> **注意**: 项目已配置 `packageManager` 字段，推荐使用 pnpm 以获得最佳体验。
+
+### 安装步骤
+
 1. 克隆项目:
 ```bash
 git clone https://github.com/weijunext/nextjs-15-starter.git
+cd nextjs-15-starter
 ```
 
-2. 安装依赖:
+2. 启用 Corepack (推荐):
 ```bash
-npm install
-# 或
-yarn
-# 或
-pnpm install
+corepack enable
 ```
 
-3. 复制环境变量文件:
+3. 安装依赖:
+```bash
+pnpm install
+# 或使用其他包管理器
+npm install
+yarn
+```
+
+4. 复制环境变量文件:
 ```bash
 cp .env.example .env
 ```
 
-4. 启动开发服务器:
+5. 启动开发服务器:
 ```bash
-npm run dev
+pnpm dev
+# 或 npm run dev
 ```
 
 访问 http://localhost:3000 查看你的应用。
@@ -110,21 +125,140 @@ NEXT_PUBLIC_BAIDU_TONGJI=
 NEXT_PUBLIC_GOOGLE_ADSENSE=
 ```
 
+## 📁 项目结构
+
+```
+nextjs-15-starter/
+├── app/                      # 应用路由目录
+│   ├── [locale]/            # 多语言路由
+│   │   ├── about/           # 关于页面
+│   │   ├── blogs/           # 博客页面
+│   │   └── ...              # 其他页面
+│   ├── api/                 # API 路由
+│   └── globals/             # 全局组件
+├── blogs/                   # 博客内容 (MDX)
+│   ├── en/                  # 英文博客
+│   ├── ja/                  # 日文博客
+│   └── zh/                  # 中文博客
+├── components/              # 可复用组件
+│   ├── ui/                  # 基础 UI 组件
+│   ├── header/              # 头部组件
+│   ├── footer/              # 底部组件
+│   └── ...                  # 其他组件
+├── config/                  # 配置文件
+├── content/                 # 静态内容 (MDX)
+├── i18n/                    # 国际化配置
+│   ├── messages/            # 翻译文件
+│   ├── routing.ts           # 路由配置
+│   └── request.ts           # 请求配置
+├── lib/                     # 工具函数
+├── public/                  # 静态资源
+└── types/                   # 类型定义
+```
+
 ## 🛠️ 技术栈
 
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
-- next-intl
-- MDX
-- Zustand
-- Vercel
+- **框架**: Next.js 15 (App Router)
+- **语言**: TypeScript
+- **样式**: Tailwind CSS + Shadcn/ui
+- **国际化**: next-intl
+- **内容**: MDX
+- **状态管理**: Zustand
+- **部署**: Vercel
+- **包管理器**: pnpm (推荐)
 
 
-## 一键部署
+## 🚀 部署
+
+### 一键部署
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/nextjs-15-starter&project-name=&repository-name=nextjs-15-starter&demo-title=Nextjs15Starter&demo-description=Nextjs%2015%20starter.&demo-url=https://nextforge.dev&demo-image=https://nextforge.dev/og.png)
+
+### 手动部署到 Vercel
+
+1. 推送代码到 GitHub
+2. 在 Vercel 中导入项目
+3. 配置环境变量
+4. 部署
+
+### 其他平台部署
+
+```bash
+# 构建生产版本
+pnpm build
+
+# 启动生产服务器
+pnpm start
+```
+
+## 💡 开发最佳实践
+
+### 包管理器使用
+
+- 项目已配置 `packageManager: "pnpm@10.12.4"`
+- 建议启用 Corepack: `corepack enable`
+- 团队成员应使用相同版本的 pnpm
+
+### 代码规范
+
+```bash
+# 代码检查
+pnpm lint
+
+# 类型检查
+pnpm type-check
+```
+
+### 多语言开发
+
+1. 新增语言支持：
+   - 在 `i18n/messages/` 添加新的语言文件
+   - 更新 `i18n/routing.ts` 配置
+   - 在 `blogs/` 和 `content/` 下创建对应语言目录
+
+2. 使用翻译：
+```tsx
+import { useTranslations } from 'next-intl';
+
+export default function MyComponent() {
+  const t = useTranslations('namespace');
+  return <h1>{t('title')}</h1>;
+}
+```
+
+## 🔧 故障排除
+
+### 常见问题
+
+**1. 包管理器版本不一致**
+```bash
+# 删除 node_modules 和 lockfile
+rm -rf node_modules pnpm-lock.yaml
+# 重新安装
+pnpm install
+```
+
+**2. MDX 文件不显示**
+- 检查文件路径是否正确
+- 确认 frontmatter 格式正确
+- 检查 `visible` 字段是否设置为 `published`
+
+**3. 多语言路由问题**
+- 确保使用 `i18n/routing.ts` 中的 `Link` 组件
+- 检查 `middleware.ts` 配置
+
+**4. 样式不生效**
+- 确认 Tailwind CSS 类名拼写正确
+- 检查是否需要重启开发服务器
+
+### 环境变量问题
+
+确保 `.env` 文件包含必要的配置：
+```bash
+# 复制示例配置
+cp .env.example .env
+# 根据需要修改配置
+```
 
 
 ## 📄 许可证

@@ -1,3 +1,5 @@
+🌍 *[English](README.md) ∙ [简体中文](README_zh.md) ∙ [日本語](README_ja.md)*
+
 # Next Forge - 多言語対応 Next.js 15 スターター
 
 グローバル対応のウェブサイトを素早く構築するための、機能豊富なNext.js 15多言語スターターテンプレートです。
@@ -23,28 +25,43 @@
 
 ## 🚀 クイックスタート
 
+### 必要な環境
+
+- Node.js 18.17 以上
+- pnpm 9.0 以上（推奨）
+
+> **注意**: プロジェクトには `packageManager` フィールドが設定されており、最適な体験のために pnpm の使用を推奨しています。
+
+### インストール手順
+
 1. リポジトリのクローン：
 ```bash
 git clone https://github.com/weijunext/nextjs-15-starter.git
+cd nextjs-15-starter
 ```
 
-2. 依存関係のインストール：
+2. Corepack の有効化（推奨）：
 ```bash
-npm install
-# または
-yarn
-# または
-pnpm install
+corepack enable
 ```
 
-3. 環境変数の設定：
+3. 依存関係のインストール：
+```bash
+pnpm install
+# または他のパッケージマネージャーを使用
+npm install
+yarn
+```
+
+4. 環境変数の設定：
 ```bash
 cp .env.example .env
 ```
 
-4. 開発サーバーの起動：
+5. 開発サーバーの起動：
 ```bash
-npm run dev
+pnpm dev
+# または npm run dev
 ```
 
 http://localhost:3000 にアクセスして確認できます。
@@ -108,20 +125,139 @@ NEXT_PUBLIC_BAIDU_TONGJI=
 NEXT_PUBLIC_GOOGLE_ADSENSE=
 ```
 
+## 📁 プロジェクト構成
+
+```
+nextjs-15-starter/
+├── app/                      # アプリディレクトリ
+│   ├── [locale]/            # 多言語ルート
+│   │   ├── about/           # Aboutページ
+│   │   ├── blogs/           # ブログページ
+│   │   └── ...              # その他のページ
+│   ├── api/                 # APIルート
+│   └── globals/             # グローバルコンポーネント
+├── blogs/                   # ブログコンテンツ（MDX）
+│   ├── en/                  # 英語ブログ
+│   ├── ja/                  # 日本語ブログ
+│   └── zh/                  # 中国語ブログ
+├── components/              # 再利用可能なコンポーネント
+│   ├── ui/                  # ベースUIコンポーネント
+│   ├── header/              # ヘッダーコンポーネント
+│   ├── footer/              # フッターコンポーネント
+│   └── ...                  # その他のコンポーネント
+├── config/                  # 設定ファイル
+├── content/                 # 静的コンテンツ（MDX）
+├── i18n/                    # 国際化設定
+│   ├── messages/            # 翻訳ファイル
+│   ├── routing.ts           # ルーティング設定
+│   └── request.ts           # リクエスト設定
+├── lib/                     # ユーティリティ関数
+├── public/                  # 静的アセット
+└── types/                   # 型定義
+```
+
 ## 🛠️ 技術スタック
 
-- Next.js 15
-- TypeScript
-- Tailwind CSS
-- Shadcn/ui
-- next-intl
-- MDX
-- Zustand
-- Vercel
+- **フレームワーク**: Next.js 15 (App Router)
+- **言語**: TypeScript
+- **スタイリング**: Tailwind CSS + Shadcn/ui
+- **国際化**: next-intl
+- **コンテンツ**: MDX
+- **状態管理**: Zustand
+- **デプロイ**: Vercel
+- **パッケージマネージャー**: pnpm（推奨）
 
-## ワンクリックデプロイ
+## 🚀 デプロイ
+
+### ワンクリックデプロイ
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/weijunext/nextjs-15-starter&project-name=&repository-name=nextjs-15-starter&demo-title=Nextjs15Starter&demo-description=Nextjs%2015%20starter.&demo-url=https://nextforge.dev&demo-image=https://nextforge.dev/og.png)
+
+### Vercelへの手動デプロイ
+
+1. GitHubにコードをプッシュ
+2. Vercelでプロジェクトをインポート
+3. 環境変数を設定
+4. デプロイ
+
+### その他のプラットフォーム
+
+```bash
+# プロダクション用ビルド
+pnpm build
+
+# プロダクションサーバーを起動
+pnpm start
+```
+
+## 💡 開発のベストプラクティス
+
+### パッケージマネージャー使用
+
+- プロジェクトは `packageManager: "pnpm@10.12.4"` で設定済み
+- Corepack を有効化: `corepack enable`
+- チームメンバーは同じ pnpm バージョンを使用すべき
+
+### コード品質
+
+```bash
+# コードリント
+pnpm lint
+
+# 型チェック
+pnpm type-check
+```
+
+### 多言語開発
+
+1. 新しい言語サポートの追加：
+   - `i18n/messages/` に新しい言語ファイルを追加
+   - `i18n/routing.ts` 設定を更新
+   - `blogs/` と `content/` に対応する言語ディレクトリを作成
+
+2. 翻訳の使用：
+```tsx
+import { useTranslations } from 'next-intl';
+
+export default function MyComponent() {
+  const t = useTranslations('namespace');
+  return <h1>{t('title')}</h1>;
+}
+```
+
+## 🔧 トラブルシューティング
+
+### よくある問題
+
+**1. パッケージマネージャーのバージョン不一致**
+```bash
+# node_modules と lockfile を削除
+rm -rf node_modules pnpm-lock.yaml
+# 再インストール
+pnpm install
+```
+
+**2. MDXファイルが表示されない**
+- ファイルパスが正しいか確認
+- frontmatter のフォーマットが正しいか確認
+- `visible` フィールドが `published` に設定されているか確認
+
+**3. 多言語ルーティングの問題**
+- `i18n/routing.ts` の `Link` コンポーネントを使用
+- `middleware.ts` の設定を確認
+
+**4. スタイルが効かない**
+- Tailwind CSS のクラス名が正しいか確認
+- 開発サーバーの再起動を試す
+
+### 環境変数の問題
+
+`.env` ファイルに必要な設定が含まれていることを確認：
+```bash
+# サンプル設定をコピー
+cp .env.example .env
+# 必要に応じて設定を変更
+```
 
 ## 📄 ライセンス
 
