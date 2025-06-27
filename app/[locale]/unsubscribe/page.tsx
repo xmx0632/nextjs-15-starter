@@ -1,4 +1,4 @@
-import { unsubscribeFromNewsletter } from "@/app/actions/newsletter";
+import { unsubscribeFromNewsletter } from "@/actions/newsletter";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
