@@ -1,4 +1,4 @@
-import { subscribeToNewsletter } from '@/app/actions/newsletter';
+import { subscribeToNewsletter } from '@/actions/newsletter';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
