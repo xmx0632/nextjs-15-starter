@@ -53,7 +53,7 @@ export async function constructMetadata({
   // build alternate language links
   const alternateLanguages = Object.keys(LOCALE_NAMES).reduce((acc, lang) => {
     const path = canonicalUrl
-      ? `${lang === DEFAULT_LOCALE ? '' : `/${lang}`}${canonicalUrl}`
+      ? `${lang === DEFAULT_LOCALE ? '' : `/${lang}`}${canonicalUrl === '/' ? '' : canonicalUrl}`
       : `${lang === DEFAULT_LOCALE ? '' : `/${lang}`}`
     acc[lang] = `${siteConfig.url}${path}`
 
@@ -68,7 +68,7 @@ export async function constructMetadata({
     creator: siteConfig.creator,
     metadataBase: new URL(siteConfig.url),
     alternates: {
-      canonical: canonicalUrl ? `${siteConfig.url}${locale === DEFAULT_LOCALE ? '' : `/${locale}`}${canonicalUrl}` : undefined,
+      canonical: canonicalUrl ? `${siteConfig.url}${locale === DEFAULT_LOCALE ? '' : `/${locale}`}${canonicalUrl === '/' ? '' : canonicalUrl}` : undefined,
       languages: alternateLanguages,
     },
     openGraph: {
@@ -84,7 +84,7 @@ export async function constructMetadata({
       card: 'summary_large_image',
       title: finalTitle,
       description: pageDescription,
-      site: `${siteConfig.url}/${pageURL}`,
+      site: `${siteConfig.url}${pageURL === '/' ? '' : pageURL}`,
       images: imageUrls,
       creator: siteConfig.creator,
     },
