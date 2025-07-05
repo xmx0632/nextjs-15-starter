@@ -30,8 +30,8 @@ export async function generateMetadata({
       description: "Page not found",
       noIndex: true,
       locale: locale as Locale,
-      path: `/blogs/${slug}`,
-      canonicalUrl: `/blogs/${slug}`,
+      path: `/blogs${slug}`,
+      canonicalUrl: `/blogs${slug}`,
     });
   }
 
@@ -41,8 +41,8 @@ export async function generateMetadata({
     description: post.description,
     images: post.image ? [post.image] : [],
     locale: locale as Locale,
-    path: `/blogs/${slug}`,
-    canonicalUrl: `/blogs/${slug}`,
+    path: `/blogs${slug}`,
+    canonicalUrl: `/blogs${slug}`,
   });
 }
 
